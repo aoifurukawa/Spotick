@@ -12,16 +12,20 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oregano:ital@0;1&display=swap');
+    </style>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-lg">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}" style="font-size: 1.5rem;">
+                <a class="navbar-brand" href="{{ url('/') }}" style='font-size: 2.0rem; font-family:  "Oregano", cursive;'>
                     {{ config('app.name') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -50,6 +54,12 @@
                                 </li>
                             @endif
                         @else
+                            <li class="d-flex align-items-center gap-5 ">
+                                <a href="" class=" text-white text-decoration-none" style="font-size: 1.5rem">home</a>
+                                <a href="" class=" text-white text-decoration-none" style="font-size: 1.5rem">Post</a>
+                                <a href="" class=" text-white me-5 text-decoration-none" style="font-size: 1.5rem">Schedule</a>
+                            </li>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -73,7 +83,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
