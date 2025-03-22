@@ -17,3 +17,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/sponsor/post', function () {
     return view('sponsor.post');
 });
+
+Route::get('/sponsor/schedule', function () {
+    return view('sponsor.schedule');
+});
