@@ -21,3 +21,7 @@ Route::get('/sponsor/post', function () {
 Route::get('/sponsor/schedule', function () {
     return view('sponsor.schedule');
 });
+
+Route::get('/sponsor/event-page', function () {
+    return view('sponsor.event-page');
+});
