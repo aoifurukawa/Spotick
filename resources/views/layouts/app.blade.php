@@ -55,9 +55,9 @@
                             @endif
                         @else
                             <li class="d-flex align-items-center gap-5 ">
-                                <a href="" class=" text-white text-decoration-none" style="font-size: 1.5rem">home</a>
-                                <a href="" class=" text-white text-decoration-none" style="font-size: 1.5rem">Post</a>
-                                <a href="" class=" text-white me-5 text-decoration-none" style="font-size: 1.5rem">Schedule</a>
+                                <a href="" class=" text-white text-decoration-none" style="font-size: 1.0rem">home</a>
+                                <a href="" class=" text-white text-decoration-none" style="font-size: 1.0rem">Post</a>
+                                <a href="" class=" text-white me-5 text-decoration-none" style="font-size: 1.0rem">Schedule</a>
                             </li>
 
                             <li class="nav-item dropdown">
