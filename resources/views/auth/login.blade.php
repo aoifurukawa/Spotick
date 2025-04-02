@@ -9,8 +9,16 @@
                 <div class="card-body">
                     <div class="row">
                         
-                        <div class="col-6">
-                            <img src="{{ asset('images/sport-fans.jpg') }}" alt="" class="img-fluid " style="max-width: 100%; height: 400px; border-radius: 20px;">
+                        <div class="col-6" style="position: relative;
+                                                  display: inline-block;">
+                            <span class="background-text" style="position: absolute;
+                                        z-index: 1; /* Lower layer */
+                                        top: 50%;
+                                        left: 50%;
+                                        transform: translate(-50%, -50%);
+                                        color: black; 
+                                        font-size: 2.0rem;">Logged In!</span>
+                            <img src="{{ asset('images/sport-fans.jpg') }}" alt="" class="img-fluid " style="max-width: 100%; height: 400px; border-radius: 20px; transition: transform 0.3s ease; position: relative; z-index: 2;" id="targetImage">
                         </div>
 
                         <div class="col-6">
@@ -61,7 +69,7 @@
 
                                 <div class="row mb-0">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn w-100" style="background-color: #9b58ec; color: white;">
+                                        <button type="submit" class="btn w-100" style="background-color: #9b58ec; color: white;" id="moveButton">
                                             {{ __('Login') }}
                                         </button>
 
@@ -80,4 +88,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById("moveButton");
+    const image = document.getElementById("targetImage");
+    let position = 0;
+
+    button.addEventListener("click", function () {
+        position += 363;
+        image.style.transform = `translateX(${position}px)`;
+    });
+});
+
+</script>
 @endsection
