@@ -10,7 +10,7 @@
                     {{-- <div class="d-flex justify-content-between w-100"> --}}
                     <div class="row">
                         <div class="col-6">
-                            <img src="{{ asset('images/sport-fans-register.avif') }}" alt="" class="img-fluid " style="max-width: 100%; height: 450px; border-radius: 10px;">
+                            <img src="{{ asset('images/sport-fans-register.avif') }}" alt="" class="img-fluid " style="max-width: 100%; height: 452px; border-radius: 10px;">
                         </div>
 
                         
@@ -88,4 +88,6 @@
         </div>
     </div>
 </div>
+
+<script src=''></script>
 @endsection
