@@ -79,6 +79,39 @@
     }
 </style>
 
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+
+    <div class="carousel-inner" data-bs-interval="5000">
+      <div class="carousel-item active">
+        <img src="{{ asset('images/baseball-home.jpg') }}" class="d-block w-100 img-" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
+      </div>
+      <div class="carousel-item">
+        <img src="{{ asset('images/basketball-home2.jpg') }}" class="d-block w-100" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
+      </div>
+      <div class="carousel-item">
+        <img src="{{ asset('images/soccer-home.jpg') }}" class="d-block w-100" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
+      </div>
+      <div class="carousel-item">
+        <img src="{{ asset('images/icehockey-home2.avif') }}" class="d-block w-100" alt="..." style="height: 400px; width: 100%; object-fit:cover;">
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
 <div class="container" style="margin: 0 !important;">
     <div class="row">
         <div class="col-3" style="background: linear-gradient(to right, #c29df0, #ddbff9);">
