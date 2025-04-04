@@ -30,6 +30,10 @@ Route::get('/sponsor/personal-information', function () {
     return view('sponsor.personal-information');
 });
 
+Route::get('/sponsor/particiants-list', function () {
+    return view('sponsor.participant-list');
+});
+
 Route::get('/user/payment', function () {
     return view('User.payment');
 });
