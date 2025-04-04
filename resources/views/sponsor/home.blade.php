@@ -86,7 +86,7 @@
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
     </div>
 
-    <div class="carousel-inner" data-bs-interval="5000">
+    <div class="carousel-inner" data-bs-interval="3000">
       <div class="carousel-item active">
         <img src="{{ asset('images/baseball-home.jpg') }}" class="d-block w-100 img-" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
       </div>
