@@ -26,6 +26,10 @@ Route::get('/sponsor/event-page', function () {
     return view('sponsor.event-page');
 });
 
+Route::get('/sponsor/personal-information', function () {
+    return view('sponsor.personal-information');
+});
+
 Route::get('/user/payment', function () {
     return view('User.payment');
 });
