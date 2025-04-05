@@ -1,92 +1,110 @@
 @extends('layouts.app')
 
 @section('content')
-<body style="background-image: url({{ asset('images/team-business-people-putting-hands-up-together_74855-19906.jpg') }});
-            background-size: cover;
-            background-position: center top 40px;
-            background-repeat: no-repeat;">
-    <div class="container mt-3">
-        <div class="card w-75 mx-auto" style="background-color: #ddddddca;  border-radius: 30px;">
-            <div class="card-header bg-dark" style="color: #e68c8c;  border-top-right-radius: 30px; border-top-left-radius: 30px;">
-                <h1 class="text-center">Participant's List</h1>
-            </div>
-
-            <div class="card-body" style="padding: 20px; ">
-                <div class="row d-flex mb-3" style="border: 5px solid; border-radius: 40px; background-color: #fff;">
-                    <div class="col-1 d-flex justify-content-center align-items-center bg-dark" style="border-top-left-radius: 40px; 
-                border-bottom-left-radius: 40px;">
-                        <h3 class="text-white">1</h3>
-                    </div>
-                    <div class="col-5 d-flex justify-content-center align-items-center">
-                        <h3>Aoi Furukawa</h3>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-center" style="margin-bottom: 0;">furukawaaoi0728@gmail.com</p>
-                        <p class="text-center mb-0" style="margin-top: 0;">Number of ticket holding: 2</p>
-                    </div>
+<link rel="stylesheet" href="{{ asset('css/participant-slyde.css') }}">
+{{-- <div class="container" style="width: 100vw;"> --}}
+    <div class="row">
+        <div class="col-3">
+            <div class="contain">
+                <div class="slider">
+                    <ul class="slider-list" style="transform: translateY(-121px); list-style: none;">
+                        <li class="slider-item">
+                            <img src="https://pa-tu.work/storage/img/posts/64d402879466e.jpg">
+                        </li>
+                        <li class="slider-item">
+                            <img src="https://pa-tu.work/storage/img/posts/64d40287b1635.jpg">
+                        </li>
+                        <li class="slider-item">
+                            <img src="https://pa-tu.work/storage/img/posts/64d40287be1db.jpg">
+                        </li>
+                    </ul>
+                    <ul class="slider-list" style="list-style: none;">
+                        <li class="slider-item">
+                            <img src="https://pa-tu.work/storage/img/posts/64d402879466e.jpg">
+                        </li>
+                        <li class="slider-item">
+                            <img src="https://pa-tu.work/storage/img/posts/64d40287b1635.jpg">
+                        </li>
+                        <li class="slider-item">
+                            <img src="https://pa-tu.work/storage/img/posts/64d40287be1db.jpg">
+                        </li>
+                    </ul>
                 </div>
-
-                <div class="row d-flex mb-3" style="border: 5px solid; border-radius: 40px; background-color: #fff;">
-                    <div class="col-1 d-flex justify-content-center align-items-center bg-dark" style="border-top-left-radius: 40px; 
-                border-bottom-left-radius: 40px;">
-                        <h3 class="text-white">1</h3>
-                    </div>
-                    <div class="col-5 d-flex justify-content-center align-items-center">
-                        <h3>Aoi Furukawa</h3>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-center">furukawaaoi0728@gmail.com</p>
-                        <p class="text-center mb-0">Number of ticket holding: 2</p>
-                    </div>
-                </div>
-
-                <div class="row d-flex mb-3" style="border: 5px solid; border-radius: 40px; background-color: #fff;">
-                    <div class="col-1 d-flex justify-content-center align-items-center bg-dark" style="border-top-left-radius: 40px; 
-                border-bottom-left-radius: 40px;">
-                        <h3 class="text-white">1</h3>
-                    </div>
-                    <div class="col-5 d-flex justify-content-center align-items-center">
-                        <h3>Aoi Furukawa</h3>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-center">furukawaaoi0728@gmail.com</p>
-                        <p class="text-center mb-0">Number of ticket holding: 2</p>
-                    </div>
-                </div>
-
-                <div class="row d-flex mb-3" style="border: 5px solid; border-radius: 40px; background-color: #fff;">
-                    <div class="col-1 d-flex justify-content-center align-items-center bg-dark" style="border-top-left-radius: 40px; 
-                border-bottom-left-radius: 40px;">
-                        <h3 class="text-white">1</h3>
-                    </div>
-                    <div class="col-5 d-flex justify-content-center align-items-center">
-                        <h3>Aoi Furukawa</h3>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-center">furukawaaoi0728@gmail.com</p>
-                        <p class="text-center mb-0">Number of ticket holding: 2</p>
-                    </div>
-                </div>
-
-                <div class="row d-flex mb-3" style="border: 5px solid; border-radius: 40px; background-color: #fff;">
-                    <div class="col-1 d-flex justify-content-center align-items-center bg-dark" style="border-top-left-radius: 40px; 
-                border-bottom-left-radius: 40px;">
-                        <h3 class="text-white">1</h3>
-                    </div>
-                    <div class="col-5 d-flex justify-content-center align-items-center">
-                        <h3>Aoi Furukawa</h3>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-center">furukawaaoi0728@gmail.com</p>
-                        <p class="text-center mb-0">Number of ticket holding: 2</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-footer bg-dark" style="border-bottom-right-radius: 30px; border-bottom-left-radius: 30px;">
-
             </div>
         </div>
+
+        <div class="col-9">
+            <h2 class="mt-3">Fan festival for Lakes</h3>
+            <hr>
+            <table>
+                <t-head>
+                    <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Mail Address</th>
+                        <th>Number of tickets</th>
+                    </tr>
+                </t-head>
+                <t-body>
+                    <tr>
+                        <td>1</td>
+                        <td>Aoi Furukawa</td>
+                        <td>furukawaaoi0728@gmail.com</td>
+                        <td>2</td>
+                    </tr>
+
+                    <tr>
+                        <td>1</td>
+                        <td>Aoi Furukawa</td>
+                        <td>furukawaaoi0728@gmail.com</td>
+                        <td>2</td>
+                    </tr>
+
+                    <tr>
+                        <td>1</td>
+                        <td>Aoi Furukawa</td>
+                        <td>furukawaaoi0728@gmail.com</td>
+                        <td>2</td>
+                    </tr>
+
+                    <tr>
+                        <td>1</td>
+                        <td>Aoi Furukawa</td>
+                        <td>furukawaaoi0728@gmail.com</td>
+                        <td>2</td>
+                    </tr>
+                </t-body>
+            </table>
+        </div>
+
+        {{-- <div class="col-3">
+            <div class="contain">
+                <div class="slider">
+                    <ul class="slider-list" style="transform: translateY(-121px); list-style: none;">
+                        <li class="slider-item">
+                            <img src="https://pa-tu.work/storage/img/posts/64d402879466e.jpg">
+                        </li>
+                        <li class="slider-item">
+                            <img src="https://pa-tu.work/storage/img/posts/64d40287b1635.jpg">
+                        </li>
+                        <li class="slider-item">
+                            <img src="https://pa-tu.work/storage/img/posts/64d40287be1db.jpg">
+                        </li>
+                    </ul>
+                    <ul class="slider-list" style="list-style: none;">
+                        <li class="slider-item">
+                            <img src="https://pa-tu.work/storage/img/posts/64d402879466e.jpg">
+                        </li>
+                        <li class="slider-item">
+                            <img src="https://pa-tu.work/storage/img/posts/64d40287b1635.jpg">
+                        </li>
+                        <li class="slider-item">
+                            <img src="https://pa-tu.work/storage/img/posts/64d40287be1db.jpg">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> --}}
     </div>
-</body>
+{{-- </div> --}}
 @endsection
