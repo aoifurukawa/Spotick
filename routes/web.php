@@ -37,3 +37,15 @@ Route::get('/sponsor/particiants-list', function () {
 Route::get('/user/payment', function () {
     return view('User.payment');
 });
+
+Route::get('/admin/user-list', function () {
+    return view('admin.user-list');
+});
+
+Route::get('/admin/sponsor-list', function () {
+    return view('admin.sponsor-list');
+});
+
+Route::get('/admin/content-list', function () {
+    return view('admin.content-list');
+});

@@ -76,35 +76,6 @@
                 </t-body>
             </table>
         </div>
-
-        {{-- <div class="col-3">
-            <div class="contain">
-                <div class="slider">
-                    <ul class="slider-list" style="transform: translateY(-121px); list-style: none;">
-                        <li class="slider-item">
-                            <img src="https://pa-tu.work/storage/img/posts/64d402879466e.jpg">
-                        </li>
-                        <li class="slider-item">
-                            <img src="https://pa-tu.work/storage/img/posts/64d40287b1635.jpg">
-                        </li>
-                        <li class="slider-item">
-                            <img src="https://pa-tu.work/storage/img/posts/64d40287be1db.jpg">
-                        </li>
-                    </ul>
-                    <ul class="slider-list" style="list-style: none;">
-                        <li class="slider-item">
-                            <img src="https://pa-tu.work/storage/img/posts/64d402879466e.jpg">
-                        </li>
-                        <li class="slider-item">
-                            <img src="https://pa-tu.work/storage/img/posts/64d40287b1635.jpg">
-                        </li>
-                        <li class="slider-item">
-                            <img src="https://pa-tu.work/storage/img/posts/64d40287be1db.jpg">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div> --}}
     </div>
 {{-- </div> --}}
 @endsection
