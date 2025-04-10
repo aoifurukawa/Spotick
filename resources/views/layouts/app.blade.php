@@ -54,11 +54,18 @@
                                 </li>
                             @endif
                         @else
+                            @if (Auth::user()->role_id==1 || Auth::user()->role_id==3)
                             <li class="d-flex align-items-center gap-5 ">
                                 <a href="" class=" text-white text-decoration-none" style="font-size: 1.0rem">home</a>
                                 <a href="" class=" text-white text-decoration-none" style="font-size: 1.0rem">Post</a>
                                 <a href="" class=" text-white me-5 text-decoration-none" style="font-size: 1.0rem">Schedule</a>
                             </li>
+                            @else
+                            <li class="d-flex align-items-center gap-5 ">
+                                <a href="" class=" text-white text-decoration-none" style="font-size: 1.0rem">home</a>
+                                <a href="" class=" text-white me-5 text-decoration-none" style="font-size: 1.0rem">Schedule</a>
+                            </li>
+                            @endif
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
