@@ -28,7 +28,20 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/home';
+
+    protected function redirectTo()
+    {
+        $user = auth()->user();
+
+        // roleがnullや空なら、情報入力ページにリダイレクト
+        if (is_null($user->role_id)) {
+            return '/sponsor/personal-information'; // 情報入力ページ（役割選択）
+        }
+
+        // roleが設定されていれば通常のホームに
+        return '/home';
+    }
 
     /**
      * Create a new controller instance.
@@ -43,7 +56,6 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -58,7 +70,6 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
      * @return \App\Models\User
      */
     protected function create(array $data)

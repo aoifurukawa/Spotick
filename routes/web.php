@@ -14,6 +14,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::patch('/home/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('user.update');
+
 Route::get('/sponsor/post', function () {
     return view('sponsor.post');
 });
