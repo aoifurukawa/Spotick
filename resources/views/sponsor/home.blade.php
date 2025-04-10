@@ -91,7 +91,7 @@
         <img src="{{ asset('images/baseball-home.jpg') }}" class="d-block w-100 img-" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
       </div>
       <div class="carousel-item">
-        <img src="{{ asset('images/basketball-home2.jpg') }}" class="d-block w-100" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
+        <img src="{{ asset('images/basket-gall.jpg') }}" class="d-block w-100" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
       </div>
       <div class="carousel-item">
         <img src="{{ asset('images/soccer-home.jpg') }}" class="d-block w-100" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
