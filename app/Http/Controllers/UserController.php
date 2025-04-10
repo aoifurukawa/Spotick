@@ -47,4 +47,11 @@ class UserController extends Controller
 
         return view('sponsor.home');
     }
+
+    public function show($id)
+    {
+        $user = $this->user->findOrFail($id);
+
+        return view('sponsor.personal-information')->with('user', $user);
+    }
 }

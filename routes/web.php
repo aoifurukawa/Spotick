@@ -16,6 +16,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::patch('/home/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('user.update');
 
+Route::get('/profile/{id}/show', [App\Http\Controllers\UserController::class, 'show'])->name('profile.show');
+
 Route::get('/sponsor/post', function () {
     return view('sponsor.post');
 });
