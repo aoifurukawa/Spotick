@@ -25,7 +25,19 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/home';
+    protected function redirectTo()
+    {
+        $user = auth()->user();
+
+        // roleがnullや空なら、情報入力ページにリダイレクト
+        if (is_null($user->role_id)) {
+            return '/sponsor/personal-information'; // 情報入力ページ（役割選択）
+        }
+
+        // roleが設定されていれば通常のホームに
+        return '/home';
+    }
 
     /**
      * Create a new controller instance.
