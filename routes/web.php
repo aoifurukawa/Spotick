@@ -20,11 +20,11 @@ Route::get('/profile/{id}/show', [App\Http\Controllers\UserController::class, 's
 
 Route::get('/sponsor/post', function () {
     return view('sponsor.post');
-});
+})->name('sponsor.post');
 
 Route::get('/sponsor/schedule', function () {
     return view('sponsor.schedule');
-});
+})->name('sponsor.schedule');
 
 Route::get('/sponsor/event-page', function () {
     return view('sponsor.event-page');

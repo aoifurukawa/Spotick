@@ -4,7 +4,7 @@
 
 @section('content')
 <body style="background: url('{{ asset('images/cheering-picture.avif') }}') no-repeat center center fixed; background-size: cover;">
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
     @csrf
         <div class="container mt-5">
             <div class="card w-75 mx-auto" style="opacity: 0.95;">
@@ -54,12 +54,15 @@
                     <div class="row">
                         <div class="col-4">
                             <label for="picture" class="form-label fw-bold mt-3">Picture 1</label>
+                            <input class="form-control mb-3" type="file" id="formFile" name="picture_1">
                         </div>
                         <div class="col-4">
                             <label for="picture" class="form-label fw-bold mt-3">Picture 2</label>
+                            <input class="form-control mb-3" type="file" id="formFile" name="picture_2">
                         </div>
                         <div class="col-4">
                             <label for="picture" class="form-label fw-bold mt-3">Picture 3</label>
+                            <input class="form-control mb-3" type="file" id="formFile" name="picture_3">
                         </div>
                     </div>
 
