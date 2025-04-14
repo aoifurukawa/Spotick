@@ -25,6 +25,7 @@ return new class extends Migration
             $table->longText('picture_1');
             $table->longText('picture_2');
             $table->longText('picture_3');
+            $table->string('background_color');
             $table->text('sponsor_name');
             $table->text('mail_address');
             $table->text('insta_url')->nullable();

@@ -18,8 +18,12 @@ Route::patch('/home/{id}', [App\Http\Controllers\UserController::class, 'edit'])
 
 Route::get('/profile/{id}/show', [App\Http\Controllers\UserController::class, 'show'])->name('profile.show');
 
+Route::post('sponsor/{id}/post-store', [App\Http\Controllers\PostController::class, 'store'])->name('post.store');
+
 Route::get('/sponsor/post', function () {
-    return view('sponsor.post');
+    $user = Auth::user();
+
+    return view('sponsor.post')->with('user', $user);
 })->name('sponsor.post');
 
 Route::get('/sponsor/schedule', function () {
