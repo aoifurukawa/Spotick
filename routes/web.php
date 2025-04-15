@@ -12,13 +12,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::patch('/home/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('user.update');
+    Route::patch('/home/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('user.update');
+    Route::get('/profile/{id}/show', [App\Http\Controllers\UserController::class, 'show'])->name('profile.show');
 
-Route::get('/profile/{id}/show', [App\Http\Controllers\UserController::class, 'show'])->name('profile.show');
-
-Route::post('sponsor/{id}/post-store', [App\Http\Controllers\PostController::class, 'store'])->name('post.store');
+    Route::post('sponsor/{id}/post-store', [App\Http\Controllers\PostController::class, 'store'])->name('post.store');
+}
+);
 
 Route::get('/sponsor/post', function () {
     $user = Auth::user();

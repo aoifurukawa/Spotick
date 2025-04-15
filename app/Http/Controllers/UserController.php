@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -9,9 +10,12 @@ class UserController extends Controller
 {
     private $user;
 
-    public function __construct(User $user)
+    private $post;
+
+    public function __construct(User $user, Post $post)
     {
         $this->user = $user;
+        $this->post = $post;
     }
 
     public function showForm()
@@ -45,7 +49,9 @@ class UserController extends Controller
         $user->role_id = $request->role_id;
         $user->save();
 
-        return view('sponsor.home');
+        $all_posts = $this->post->latest()->get();
+
+        return view('sponsor.home')->with('all_posts', $all_posts);
     }
 
     public function show($id)
