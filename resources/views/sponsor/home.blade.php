@@ -162,36 +162,27 @@
                 </div>
             </div>
 
-            <div class="event-card">
-                <img src="{{ asset('images/abstract-basketball-watercolor-style-background_1017-39243.jpg') }}" alt="Event Image" class="event-image">
-                <div class="event-content">
-                    <div class="event-meta">
-                        <span class="event-title">Dogers vs Yankees</span>
-                        <span>2025/07/29</span>
-                        <span>Dogers Stadium</span>
+            @forelse ($all_posts as $post)
+                <div class="event-card">
+                    <a href=""><img src="{{ $post->picture_1 }}" alt="Event Image" class="event-image"></a>
+                    <div class="event-content">
+                        <div class="event-meta">
+                            <span class="event-title">{{\Illuminate\Support\Str::limit($post->title, 20, '...')}}</span>
+                            <span>{{$post->date}} </span>
+                            <span>{{$post->venue}}</span>
+                        </div>
+                        <p class="event-description"><span class='fw-bold'>Description: </span>{{\Illuminate\Support\Str::limit($post->description, 60, '...')}}</p>
                     </div>
-                    <p class="event-description">Description: In this event, you can enjoy your......</p>
+                    <div>
+                        <span class="heart-icon">❤️11</span>
+                    </div>
                 </div>
-                <div>
-                    <span class="heart-icon">❤️11</span>
-                </div>
-            </div>
+            @empty
+                <h3 class="text-center">
+                    No post yet
+                </h3>
+            @endforelse
             
-            <div class="event-card">
-                <img src="{{ asset('images/abstract-basketball-watercolor-style-background_1017-39243.jpg') }}" alt="Event Image" class="event-image">
-                <div class="event-content">
-                    <div class="event-meta">
-                        <span class="event-title">Title----------</span>
-                        <span>2025/07/29</span>
-                        <span>Dogers</span>
-                    </div>
-                    <p class="event-description">Description: In this event, you can enjoy your......</p>
-                </div>
-                <div>
-                    <span class="heart-icon">❤️15</span>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>

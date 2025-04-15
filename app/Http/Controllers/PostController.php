@@ -71,7 +71,7 @@ class PostController extends Controller
 
         $this->post->save();
 
-        return 'information saving success';
+        return redirect()->route('home');
 
     }
 }
