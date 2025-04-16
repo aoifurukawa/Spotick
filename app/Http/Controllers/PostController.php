@@ -74,4 +74,11 @@ class PostController extends Controller
         return redirect()->route('home');
 
     }
+
+    public function show($id)
+    {
+        $post_detail = $this->post->findOrFail($id);
+
+        return view('sponsor.event-page')->with('post_detail', $post_detail);
+    }
 }

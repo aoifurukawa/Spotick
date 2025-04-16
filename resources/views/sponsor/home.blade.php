@@ -164,7 +164,7 @@
 
             @forelse ($all_posts as $post)
                 <div class="event-card">
-                    <a href=""><img src="{{ $post->picture_1 }}" alt="Event Image" class="event-image"></a>
+                    <a href="{{ route('event-detail.show', $post->id) }}"><img src="{{ $post->picture_1 }}" alt="Event Image" class="event-image"></a>
                     <div class="event-content">
                         <div class="event-meta">
                             <span class="event-title">{{\Illuminate\Support\Str::limit($post->title, 20, '...')}}</span>
