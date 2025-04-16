@@ -19,6 +19,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile/{id}/show', [App\Http\Controllers\UserController::class, 'show'])->name('profile.show');
 
     Route::post('sponsor/{id}/post-store', [App\Http\Controllers\PostController::class, 'store'])->name('post.store');
+    Route::get('sponsor/{id}/event-detail', [App\Http\Controllers\PostController::class, 'show'])->name('event-detail.show');
+    Route::get('/user/payment', function () {
+        return view('User.payment');
+    })->name('payment');
 }
 );
 
@@ -42,10 +46,6 @@ Route::get('/sponsor/personal-information', function () {
 
 Route::get('/sponsor/particiants-list', function () {
     return view('sponsor.participant-list');
-});
-
-Route::get('/user/payment', function () {
-    return view('User.payment');
 });
 
 Route::get('/admin/user-list', function () {
