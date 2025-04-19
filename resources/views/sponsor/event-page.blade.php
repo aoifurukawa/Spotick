@@ -82,9 +82,12 @@
                                                 text-overflow: ellipsis;
                                                 max-width: 100%;'>{{$post_detail->title}}</h1>
                 </div>
-                <div class="col-2 text-center">
-                    <a href={{ route('payment') }}><button type="button" class="btn btn-dark btn-outline-light">Book</button></a>
-                </div>
+                <form action="{{ route('reservation.store', $post_detail->id) }}" method="post">
+                    @csrf
+                    <div class="col-2 text-center">
+                        <button type="submit" class="btn btn-dark btn-outline-light">Reserve</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

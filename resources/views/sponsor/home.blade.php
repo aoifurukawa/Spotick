@@ -167,7 +167,7 @@
                     <a href="{{ route('event-detail.show', $post->id) }}"><img src="{{ $post->picture_1 }}" alt="Event Image" class="event-image"></a>
                     <div class="event-content">
                         <div class="event-meta">
-                            <span class="event-title">{{\Illuminate\Support\Str::limit($post->title, 20, '...')}}</span>
+                            <span class="event-title">{{\Illuminate\Support\Str::limit($post->title, 18, '...')}}</span>
                             <span>{{$post->date}} </span>
                             <span>{{$post->venue}}</span>
                         </div>
