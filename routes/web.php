@@ -23,6 +23,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/payment', function () {
         return view('User.payment');
     })->name('payment');
+
+    // reserve
+    Route::post('reservation/{post_id}/store', [App\Http\Controllers\ReservationController::class, 'store'])->name('reservation.store');
+    Route::get('reservation/show', [App\Http\Controllers\ReservationController::class, 'show'])->name('reservation.show');
 }
 );
 

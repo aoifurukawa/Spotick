@@ -78,7 +78,6 @@
         transform: scale(1.2);
     }
 </style>
-
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -92,7 +91,7 @@
         <img src="{{ asset('images/baseball-home.jpg') }}" class="d-block w-100 img-" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
       </div>
       <div class="carousel-item">
-        <img src="{{ asset('images/basketball-home2.jpg') }}" class="d-block w-100" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
+        <img src="{{ asset('images/basket-gall.jpg') }}" class="d-block w-100" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
       </div>
       <div class="carousel-item">
         <img src="{{ asset('images/soccer-home.jpg') }}" class="d-block w-100" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
@@ -111,10 +110,11 @@
       <span class="visually-hidden">Next</span>
     </button>
 </div>
-
+  
+  
 <div class="container" style="margin: 0 !important;">
     <div class="row">
-        <div class="col-3" style="background: linear-gradient(to right, #c29df0, #ddbff9);">
+        <div class="col-3" style="background: linear-gradient(to right, #83bff0, #b0ddf4);">
             <form action="" method="POST">
                 <label for="name" class="form-label fw-bold mt-3">Name</label>
                 <input type="text" name="name" id="name" class='form-control mb-3'>
@@ -149,7 +149,7 @@
         <div class="col-9">
             <div class="row align-items-center">
                 <div class="col-10">
-                    <h1 class='display-3  text-center'>Your Events</h1>
+                    <h1 class='display-3 text-center'>Your Events</h1>
                 </div>
 
                 <div class="col-2">
@@ -162,36 +162,56 @@
                 </div>
             </div>
 
-            <div class="my-event" style="margin-bottom: 50px;">
+            <h3 class="ms-5">As User</h3>
+            <hr>
+
+            @forelse ($my_reservations as $reservation)
                 <div class="event-card">
-                    <img src="{{ asset('images/abstract-basketball-watercolor-style-background_1017-39243.jpg') }}" alt="Event Image" class="event-image">
+                    <a href="{{ route('event-detail.show', $reservation->id) }}"><img src="{{ $reservation->post->picture_1 }}" alt="Event Image" class="event-image"></a>
                     <div class="event-content">
                         <div class="event-meta">
-                            <span class="event-title">Dogers vs Yankees</span>
-                            <span>2025/07/29</span>
-                            <span>Dogers Stadium</span>
+                            <span class="event-title">{{\Illuminate\Support\Str::limit($reservation->post->title, 18, '...')}}</span>
+                            <span>{{$reservation->post->date}} </span>
+                            <span>{{$reservation->post->venue}}</span>
                         </div>
-                        <p class="event-description">Description: In this event, you can enjoy your......</p>
+                        <p class="event-description"><span class='fw-bold'>Description: </span>{{\Illuminate\Support\Str::limit($reservation->post->description, 60, '...')}}</p>
                     </div>
                     <div>
                         <span class="heart-icon">❤️11</span>
                     </div>
                 </div>
+            @empty
+                <h3 class="text-center">
+                    No post yet
+                </h3>
+            @endforelse
 
-                <div class="row justify-content-end">
-                    <div class="col-1">
-                        <button type="submit" class="btn fw-bold border border-dark" style="background-color: #ddd">Page</button>
-                    </div>
-                    <div class="col-1">
-                        <button type="submit" class="btn fw-bold border border-dark" style="background-color: #ddd">Participant</button>
-                    </div>
-                    <div class="col-1">
+            <h3 class="ms-5">As sponsor</h3>
+            <hr>
 
+            @forelse ($my_posts as $post)
+                <div class="event-card">
+                    <a href="{{ route('event-detail.show', $post->id) }}"><img src="{{ $post->picture_1 }}" alt="Event Image" class="event-image"></a>
+                    <div class="event-content">
+                        <div class="event-meta">
+                            <span class="event-title">{{\Illuminate\Support\Str::limit($post->title, 18, '...')}}</span>
+                            <span>{{$post->date}} </span>
+                            <span>{{$post->venue}}</span>
+                        </div>
+                        <p class="event-description"><span class='fw-bold'>Description: </span>{{\Illuminate\Support\Str::limit($post->description, 60, '...')}}</p>
+                    </div>
+                    <div>
+                        <span class="heart-icon">❤️11</span>
                     </div>
                 </div>
-            </div>
+            @empty
+                <h3 class="text-center">
+                    No post yet
+                </h3>
+            @endforelse
             
         </div>
     </div>
 </div>
+
 @endsection

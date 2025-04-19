@@ -29,5 +29,6 @@ class HomeController extends Controller
         $all_posts = $this->post->latest()->get();
 
         return view('sponsor/home')->with('all_posts', $all_posts);
+
     }
 }
