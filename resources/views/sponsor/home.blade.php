@@ -110,8 +110,7 @@
       <span class="visually-hidden">Next</span>
     </button>
 </div>
-  
-  
+
 <div class="container" style="margin: 0 !important;">
     <div class="row">
         <div class="col-3" style="background: linear-gradient(to right, #83bff0, #b0ddf4);">
@@ -131,7 +130,6 @@
 
                 <label for="date" class="form-label fw-bold">Date</label>
                 <input type="date" name="date" id="date" class='form-control mb-3'>
-
 
                 <label for="date" class="form-label fw-bold">Term</label>
                 <input type="date" name="date" id="date" class='form-control mb-3'>
@@ -182,8 +180,8 @@
                     No post yet
                 </h3>
             @endforelse
-            
         </div>
+
     </div>
 </div>
 
