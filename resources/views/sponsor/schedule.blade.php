@@ -187,9 +187,15 @@
                     </div>
                 </div>
             @empty
+                @if (Auth::user()->role_id = 2)
                 <h3 class="text-center">
-                    No post yet
+                    Since you are not sponsor, you are not able to post.
                 </h3>
+                @else
+                    <h3 class="text-center">
+                        No post yet
+                    </h3>
+                @endif
             @endforelse
             
         </div>
