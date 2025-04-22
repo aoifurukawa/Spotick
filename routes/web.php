@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/payment', function () {
         return view('User.payment');
     })->name('payment');
+    Route::post('/research', [App\Http\Controllers\PostController::class, 'research'])->name('events.research');
 
     // reserve
     Route::post('reservation/{post_id}/store', [App\Http\Controllers\ReservationController::class, 'store'])->name('reservation.store');

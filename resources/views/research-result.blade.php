@@ -114,9 +114,9 @@
                 <input type="date" name="date" id="date" class='form-control mb-3'>
 
                 <label for="date" class="form-label fw-bold">Term</label>
-                <input type="date" name="start_term" id="date" class='form-control mb-3'>
+                <input type="date" name="date" id="date" class='form-control mb-3'>
                 <p class="text-center fw-bold" style="transform: rotate(90deg); font-size: 2rem;">~</p>
-                <input type="date" name="end_term" id="date" class='form-control mb-3'>
+                <input type="date" name="date" id="date" class='form-control mb-3'>
 
                 <label for="price" class="form-label fw-bold">Max price</label>
                 <input type="number" name="price" id="price" class='form-control mb-5' min="0" placeholder="$">
@@ -133,7 +133,7 @@
         </div>
 
         <div class="col-9">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-10">
                     <h1 class='display-3  text-center'>All Events</h1>
                 </div>
@@ -148,7 +148,11 @@
                 </div>
             </div>
 
-            @forelse ($all_posts as $post)
+            <hr>
+            <h3 class="mx-auto" style="width:85%">your condition: <span class='text-danger'>{{$title}} {{$venue}}</span></h3>
+            <hr>
+
+            @forelse ($results as $post)
                 <div class="event-card">
                     <a href="{{ route('event-detail.show', $post->id) }}"><img src="{{ $post->picture_1 }}" alt="Event Image" class="event-image"></a>
                     <div class="event-content">
@@ -165,11 +169,10 @@
                 </div>
             @empty
                 <h3 class="text-center">
-                    No post yet
+                    No result
                 </h3>
             @endforelse
         </div>
-
     </div>
 </div>
 
