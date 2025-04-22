@@ -31,6 +31,16 @@ Route::group(['middleware' => 'auth'], function () {
 }
 );
 
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
+    // sponsor
+    Route::get('/admin/sponsor-list', [App\Http\Middleware\AdminMiddleware::class, 'index'])->name('sponsors');
+
+    // user
+
+    // content
+
+});
+
 Route::get('/sponsor/post', function () {
     $user = Auth::user();
 
