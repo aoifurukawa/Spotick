@@ -76,6 +76,15 @@
                                     {{-- profile --}}
                                     <a href="{{ route('profile.show', Auth::user()->id) }}" class="dropdown-item">Profile</a>
 
+                                    @can('admin')
+                                    <!--admin control -->
+                                        <a href="{{  }}" class="dropdown-item">
+                                            <i class="fa-solid fa-user-gear"></i> Admin
+                                        </a>
+
+                                        <hr class="dropdown-divider">
+                                    @endcan
+
                                     {{-- logout --}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
