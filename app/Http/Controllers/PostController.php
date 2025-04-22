@@ -81,4 +81,42 @@ class PostController extends Controller
 
         return view('sponsor.event-page')->with('post_detail', $post_detail);
     }
+
+    public function research(Request $request)
+    {
+        $query = $this->post->query();
+        $title = '';
+        if ($request->filled('title')) {
+            $query->where('title', 'like', '%'.$request->title.'%');
+            $title = $request->title;
+        }
+
+        $venue = '';
+        if ($request->filled('venue')) {
+            $query->where('venue', 'like', '%'.$request->venue.'%');
+            $venue = $request->venue;
+        }
+
+        if ($request->filled('content')) {
+            $query->where('content', $request->content); // contentが1や2などの値
+        }
+
+        if ($request->filled('date')) {
+            $query->whereDate('date', $request->date);
+        }
+
+        if ($request->filled('start_term') && $request->filled('end_term')) {
+            $query->whereBetween('date', [$request->start_term, $request->end_term]);
+        }
+
+        if ($request->filled('price')) {
+            $query->where('price', '<=', $request->price);
+        }
+
+        $results = $query->get();
+
+        return view('research-result')->with('results', $results)
+            ->with('title', $title)
+            ->with('venue', $venue);
+    }
 }
