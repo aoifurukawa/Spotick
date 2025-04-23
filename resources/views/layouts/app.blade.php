@@ -78,7 +78,7 @@
 
                                     @can('admin')
                                     <!--admin control -->
-                                        <a href="{{  }}" class="dropdown-item">
+                                        <a href="{{ route('admin.sponsors') }}" class="dropdown-item">
                                             <i class="fa-solid fa-user-gear"></i> Admin
                                         </a>
 

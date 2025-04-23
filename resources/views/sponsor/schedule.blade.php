@@ -96,7 +96,7 @@
   
 <div class="container" style="margin: 0 !important;">
     <div class="row">
-        <div class="col-3" style="background: linear-gradient(to right, #83bff0, #b0ddf4);">
+        <div class="col-3" style="background: linear-gradient(to right, #f0a9fb, #f6c5f8);">
             <form action="" method="POST">
                 <label for="name" class="form-label fw-bold mt-3">Name</label>
                 <input type="text" name="name" id="name" class='form-control mb-3'>

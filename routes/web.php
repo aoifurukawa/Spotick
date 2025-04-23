@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ContentsController;
+use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -33,11 +35,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
     // sponsor
-    Route::get('/admin/sponsor-list', [App\Http\Middleware\AdminMiddleware::class, 'index'])->name('sponsors');
+    Route::get('/admin/sponsors-list', [UsersController::class, 'sponsors_show'])->name('sponsors');
 
     // user
+    Route::get('/admin/users-list', [UsersController::class, 'users_show'])->name('users');
 
     // content
+    Route::get('/admin/users-content', [ContentsController::class, 'contents_show'])->name('contents');
 
 });
 
