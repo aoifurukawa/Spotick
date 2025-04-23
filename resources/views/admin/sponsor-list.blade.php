@@ -11,13 +11,13 @@
                 <table class="" style="">
                     <tbody class="">
                         <tr>
-                            <td style="background-color: #e68c8c;" class=" text-center fw-bold"><a href="" class="text-dark text-decoration-none">Sponsor</a></td>
+                            <td style="background-color: #e68c8c;" class=" text-center fw-bold"><a href="{{ route('admin.sponsors') }}" class="text-dark text-decoration-none">Sponsor</a></td>
                         </tr>
                         <tr>
-                            <td style="background-color: #ddd;" class=" text-center fw-bold"><a href="" class="text-dark text-decoration-none">User</a></td>
+                            <td style="background-color: #ddd;" class=" text-center fw-bold"><a href="{{ route('admin.users') }}" class="text-dark text-decoration-none">User</a></td>
                         </tr>
                         <tr>
-                            <td style="background-color: #ddd;" class=" text-center fw-bold"><a href="" class="text-dark text-decoration-none">Content</a></td>
+                            <td style="background-color: #ddd;" class=" text-center fw-bold"><a href="{{ route('admin.contents') }}" class="text-dark text-decoration-none">Content</a></td>
                         </tr>
                     </tbody>
                 </table>
