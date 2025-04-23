@@ -35,7 +35,7 @@
             <div class="col-5 mt-5">
                 <div class="card" style="margin-bottom: 150px; border-radius: 20px; background-color: rgba(255, 255, 255, 0);">
                     <div class="card-body" style="border: 5px solid black; border-radius: 20px; background-color: rgba(255, 255, 255, 0.8);">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore sint laudantium maxime quae molestiae pariatur suscipit aperiam, quod doloribus voluptate in odio ad, recusandae at similique quos eos, dignissimos provident sequi cum commodi expedita! Et facilis temporibus praesentium debitis ullam inventore labore quae molestias obcaecati quasi esse sapiente quod sequi culpa nostrum officia nesciunt, tempore repudiandae fugiat voluptates? Quis laborum repellendus blanditiis ipsam incidunt temporibus dignissimos eos asperiores officiis quas nostrum ratione nam odit enim, quibusdam vel eius, illum voluptatibus natus totam mollitia, doloribus molestias ipsum. Unde quaerat eum veniam? Distinctio ad quo exercitationem eos similique eum, minima ut. Assumenda fugiat mollitia, impedit quis labore, explicabo sit deleniti nisi doloribus laboriosam ipsa quaerat amet dolorum nihil, voluptatibus asperiores eligendi ab repellendus quo quod voluptatum repudiandae. Adipisci, neque non aspernatur fuga laudantium sint esse sapiente rem omnis est alias voluptas illo a. Reiciendis odio maxime voluptatibus error distinctio aperiam, quis animi?
+                        <p>{{$answer}}</p>
                     </div>
                 </div>
             </div>

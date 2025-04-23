@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PostController extends Controller
 {
@@ -77,9 +78,49 @@ class PostController extends Controller
 
     public function show($id)
     {
+
+        $user = auth()->user();
         $post_detail = $this->post->findOrFail($id);
 
-        return view('sponsor.event-page')->with('post_detail', $post_detail);
+        // 仮にUserモデルに住所と空港が登録されてると仮定
+        $user_address = $user->address;
+        $user_airport = $user->airport;
+
+        $venue = $post_detail->venue; // 例: "幕張メッセ"
+        $event_date = $post_detail->date; // 例: "2025-04-29"
+
+        $prompt = "
+                    私は $event_date に $venue で開催されるイベントに参加します。
+                    自宅は $user_address にあり、よく利用する空港は $user_airport です。
+
+                    以下を提案してください：
+                    1. 自宅または空港から $venue までのベストなアクセス方法。
+                    2. $venue 周辺のおすすめホテル。
+                    3. $event_date に周辺で訪れるべき観光スポット。
+
+                    日本語でお願いします。
+                    ";
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer '.config('services.openai.api_key'),
+            'Content-Type' => 'application/json',
+        ])->post('https://api.openai.com/v1/chat/completions', [
+            'model' => 'gpt-3.5-turbo',
+            'messages' => [
+                ['role' => 'system', 'content' => 'You are a travel assistant.'],
+                ['role' => 'user', 'content' => $prompt],
+            ],
+            'temperature' => 0.7,
+            'max_tokens' => 500,
+        ]);
+
+        $chatResponse = $response->json()['choices'][0]['message']['content'] ?? '情報を取得できませんでした。';
+
+        // $answer = response()->json(['recommendation' => $chatResponse]);
+        $answer = $chatResponse;
+
+        return view('sponsor.event-page')->with('post_detail', $post_detail)
+            ->with('answer', $answer);
     }
 
     public function research(Request $request)
