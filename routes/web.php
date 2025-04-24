@@ -27,6 +27,9 @@ Route::group(['middleware' => 'auth'], function () {
     })->name('payment');
     Route::post('/research', [App\Http\Controllers\PostController::class, 'research'])->name('events.research');
 
+    // schedule
+    Route::get('/schedule/{id}/participants-list', [App\Http\Controllers\PostController::class, 'show_participants'])->name('schedule.participants');
+
     // reserve
     Route::post('reservation/{post_id}/store', [App\Http\Controllers\ReservationController::class, 'store'])->name('reservation.store');
     Route::get('reservation/show', [App\Http\Controllers\ReservationController::class, 'show'])->name('reservation.show');
