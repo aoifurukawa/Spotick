@@ -160,4 +160,11 @@ class PostController extends Controller
             ->with('title', $title)
             ->with('venue', $venue);
     }
+
+    public function show_participants($id)
+    {
+        $posts = $this->post->findOrFail($id);
+
+        return view('sponsor.participant-list')->with('posts', $posts);
+    }
 }

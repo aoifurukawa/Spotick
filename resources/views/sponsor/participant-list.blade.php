@@ -9,24 +9,24 @@
                 <div class="slider">
                     <ul class="slider-list" style="transform: translateY(-121px); list-style: none;">
                         <li class="slider-item">
-                            <img src="https://pa-tu.work/storage/img/posts/64d402879466e.jpg">
+                            <img src="{{ $posts->picture_1 }}">
                         </li>
                         <li class="slider-item">
-                            <img src="https://pa-tu.work/storage/img/posts/64d40287b1635.jpg">
+                            <img src="{{  $posts->picture_2  }}">
                         </li>
                         <li class="slider-item">
-                            <img src="https://pa-tu.work/storage/img/posts/64d40287be1db.jpg">
+                            <img src="{{ $posts->picture_3 }}">
                         </li>
                     </ul>
                     <ul class="slider-list" style="list-style: none;">
                         <li class="slider-item">
-                            <img src="https://pa-tu.work/storage/img/posts/64d402879466e.jpg">
+                            <img src="{{ $posts->picture_1 }}">
                         </li>
                         <li class="slider-item">
-                            <img src="https://pa-tu.work/storage/img/posts/64d40287b1635.jpg">
+                            <img src="{{ $posts->picture_2 }}">
                         </li>
                         <li class="slider-item">
-                            <img src="https://pa-tu.work/storage/img/posts/64d40287be1db.jpg">
+                            <img src="{{ $posts->picture_3 }}">
                         </li>
                     </ul>
                 </div>
@@ -34,7 +34,7 @@
         </div>
 
         <div class="col-9">
-            <h2 class="mt-3">Fan festival for Lakes</h3>
+            <h2 class="mt-3">{{$posts->title}}</h3>
             <hr>
             <table>
                 <t-head>
@@ -46,33 +46,20 @@
                     </tr>
                 </t-head>
                 <t-body>
+                    @forelse ($posts->reservation as $reservation)
                     <tr>
-                        <td>1</td>
-                        <td>Aoi Furukawa</td>
-                        <td>furukawaaoi0728@gmail.com</td>
-                        <td>2</td>
+                        <td>{{$reservation->user->id}}</td>
+                        <td>{{$reservation->user->name}}</td>
+                        <td>{{$reservation->user->email}}</td>
+                        <td></td>
                     </tr>
+                    @empty
+                    <h3 class="text-center">
+                        No reservation yet
+                    </h3>
+                    @endforelse
+                    
 
-                    <tr>
-                        <td>1</td>
-                        <td>Aoi Furukawa</td>
-                        <td>furukawaaoi0728@gmail.com</td>
-                        <td>2</td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>Aoi Furukawa</td>
-                        <td>furukawaaoi0728@gmail.com</td>
-                        <td>2</td>
-                    </tr>
-
-                    <tr>
-                        <td>1</td>
-                        <td>Aoi Furukawa</td>
-                        <td>furukawaaoi0728@gmail.com</td>
-                        <td>2</td>
-                    </tr>
                 </t-body>
             </table>
         </div>

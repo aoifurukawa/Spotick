@@ -186,6 +186,18 @@
                         <span class="heart-icon">❤️11</span>
                     </div>
                 </div>
+                <div class="d-flex justify-content-end gap-2">
+                    <form action="">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-outline-white">Delete</button>
+                    </form>
+                    <form action="">
+                        @csrf
+                        <button type="submit" class="btn btn-primary btn-outline-white">Edit</button>
+                    </form>                    
+                    <a class="btn btn-warning btn-outline-white" href="{{ route('schedule.participants', $post->id) }}">Participants List</a>
+                </div>
+                <br>
             @empty
                 @if (Auth::user()->role_id = 2)
                 <h3 class="text-center">
