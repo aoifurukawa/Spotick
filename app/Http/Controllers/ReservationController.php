@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Reservation;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
@@ -18,10 +19,15 @@ class ReservationController extends Controller
         $this->post = $post;
     }
 
-    public function store($post_id)
+    public function store(Request $request, $post_id)
     {
+        $request->validate([
+            'number_of_tickets' => 'required|integer|min:1',
+        ]);
+
         $this->reservation->user_id = Auth::id();
         $this->reservation->post_id = $post_id;
+        $this->reservation->number_of_tickets = $request->number_of_tickets;
         $this->reservation->reserved_at = now();
 
         $this->reservation->save();

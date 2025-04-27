@@ -5,8 +5,8 @@
 
 <div class="slider">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-7">
+        <div class="row">
+            <div class="col-7 mt-5">
                 <div class="card" style="border-radius: 20px; background-color: rgba(255, 255, 255, 0);">
                     <div class="card-body" style="border: 5px solid black; border-radius: 20px; background-color: rgba(255, 255, 255, 0.8);">
                         <span class="fw-bold">Description: </span>{{ $post_detail->description }}
@@ -22,6 +22,7 @@
                             <div class="col-9">
                                 <p><span class="fw-bold">Venue: </span>{{$post_detail->venue}}</p>
                                 <p><span class="fw-bold">Date: </span>{{$post_detail->date}}</p>
+                                <p><span class="fw-bold">Price for per ticket: </span>{{$post_detail->price}} $</p>
                                 <p><span class="fw-bold">Sponsor's Name: </span>{{$post_detail->sponsor_name}}</p>
                                 <p><span class="fw-bold">Sponsor's Email: </span>{{$post_detail->mail_address}}</p>
                                 <a href="{{ $post_detail->insta_url }}"><i class="fa-brands fa-instagram"></i></a>
@@ -45,17 +46,22 @@
 <div class="footer d-flex align-items-center justify-content-center" style="position: fixed; width: 100%; background-color: black; bottom: 0; height: 100px;">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-10 text-center">
+            <div class="col-8 text-center">
                 <h1 class="text-white" style='white-space: nowrap;
                                             overflow: hidden;
                                             text-overflow: ellipsis;
                                             max-width: 100%;'>{{$post_detail->title}}</h1>
             </div>
             
-            <div class="col-2 text-center">
+            <div class="col-4 text-center">
                 <form action="{{ route('reservation.store', $post_detail->id) }}" method="post">
                     @csrf
-                    <button type="submit" class="btn btn-dark btn-outline-light">Reserve</button>
+                    <div class="d-flex align-items-center gap-2">
+                        <label for="tickets" class="form-label text-white mb-0">Number of tickets</label>
+                        <input type="number" name="number_of_tickets" id="tickets" class="form-control" style="width: 20%">
+                        <button type="submit" class="btn btn-dark btn-outline-light">Reserve</button>
+                        <span class="heart-icon">❤️11</span>
+                    </div>
                 </form>
             </div>
         </div>
@@ -66,7 +72,7 @@
 <style>
     .slider {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-size: cover;
     background-position: center;
     animation: bgFade 18s infinite;

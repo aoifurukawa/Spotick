@@ -51,7 +51,7 @@
                         <td>{{$reservation->user->id}}</td>
                         <td>{{$reservation->user->name}}</td>
                         <td>{{$reservation->user->email}}</td>
-                        <td></td>
+                        <td>{{$reservation->number_of_tickets}}</td>
                     </tr>
                     @empty
                     <h3 class="text-center">
