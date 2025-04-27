@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->dateTime('reserved_at');
+            $table->integer('number_of_tickets');
             $table->timestamps();
         });
     }
