@@ -59,13 +59,13 @@
                                 <a href="{{ route('home') }}" class=" text-white text-decoration-none" style="font-size: 1.0rem">home</a>
                                 <a href="{{ route('sponsor.post') }}" class=" text-white text-decoration-none" style="font-size: 1.0rem">Post</a>
                                 <a href="{{ route('reservation.show') }}" class=" text-white me-5 text-decoration-none" style="font-size: 1.0rem">Schedule</a>
-                            </li>
+                            </li>   
                             @else
-                            <li class="d-flex align-items-center gap-5 ">
+                            <li class="d-flex align-items-center gap-5">
                                 <a href="{{ route('home') }}" class=" text-white text-decoration-none" style="font-size: 1.0rem">home</a>
                                 <a href="{{ route('reservation.show') }}" class=" text-white me-5 text-decoration-none" style="font-size: 1.0rem">Schedule</a>
                             </li>
-                            @endif
+                            @endif                                                                              
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

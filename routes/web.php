@@ -20,6 +20,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/home/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('user.update');
     Route::get('/profile/{id}/show', [App\Http\Controllers\UserController::class, 'show'])->name('profile.show');
 
+    Route::get('/sponsor/post', function () {
+        $user = Auth::user();
+
+        return view('sponsor.post')->with('user', $user);
+    })->name('sponsor.post');
+
     Route::post('sponsor/{id}/post-store', [App\Http\Controllers\PostController::class, 'store'])->name('post.store');
     Route::get('sponsor/{id}/event-detail', [App\Http\Controllers\PostController::class, 'show'])->name('event-detail.show');
     Route::get('/user/payment', function () {
@@ -33,6 +39,11 @@ Route::group(['middleware' => 'auth'], function () {
     // reserve
     Route::post('reservation/{post_id}/store', [App\Http\Controllers\ReservationController::class, 'store'])->name('reservation.store');
     Route::get('reservation/show', [App\Http\Controllers\ReservationController::class, 'show'])->name('reservation.show');
+
+    // like
+    Route::post('like/{post_id}/store', [App\Http\Controllers\LikeController::class, 'store'])->name('like.store');
+    Route::delete('like/{post_id}/destroy', [App\Http\Controllers\LikeController::class, 'destroy'])->name('like.destroy');
+
 }
 );
 
@@ -47,12 +58,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::get('/admin/users-content', [ContentsController::class, 'contents_show'])->name('contents');
 
 });
-
-Route::get('/sponsor/post', function () {
-    $user = Auth::user();
-
-    return view('sponsor.post')->with('user', $user);
-})->name('sponsor.post');
 
 Route::get('/sponsor/schedule', function () {
     return view('sponsor.schedule');
