@@ -24,14 +24,14 @@
                 <label for="role" class="form-label">Role</label>
                 <select name="role_id" id="role" class="form-select mb-3">
                     <option value="" hidden>Select role</option>
-                    <option value="2">User</option>
-                    <option value="3">Sponsor</option>
+                    <option value="2" {{ old('role_id', Auth::user()->role_id) == 2 ? 'selected' : '' }}>User</option>
+                    <option value="3" {{ old('role_id', Auth::user()->role_id) == 3 ? 'selected' : '' }}>Sponsor</option>
                 </select>
                 @error('role_id')
                     <div class="text-danger">{{$message}}</div>
                 @enderror
                 <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" id="password" class="form-control mb-3">
+                <input type="password" name="password" id="password" class="form-control mb-3" value='{{ old('password', Auth::user()->password) }}'>
             </div>
 
             <div class="col-6">
@@ -45,7 +45,7 @@
                 <h4>Residence Information</h4>
                 <hr>
                 <label for="country" class="form-label">Country</label>
-                <select name="country" id="cuntry" class="form-select mb-3">
+                <select name="country" id="cuntry" class="form-select mb-3" >
                     <option value="" hidden></option>
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="Åland Islands">Åland Islands</option>
@@ -293,11 +293,11 @@
                     <option value="Zimbabwe">Zimbabwe</option>
                 </select>
                 <label for="zip-code" class="form-label">Zip Code</label>
-                <input type="number" name="zip_code" id="zip-code" class="form-control mb-3">
+                <input type="number" name="zip_code" id="zip-code" class="form-control mb-3" value='{{ old('zip_code', Auth::user()->zip_code) }}'>
                 <label for="address" class="form-label">Address</label>
-                <input type="text" name="address" id="address" class="form-control mb-3">
+                <input type="text" name="address" id="address" class="form-control mb-3" value='{{ old('address', Auth::user()->address) }}'>
                 <label for="air_port" class="form-label">Air Port (you often use)</label>
-                <input type="text" name="airport" id="air_port" class="form-control mb-3">
+                <input type="text" name="airport" id="air_port" class="form-control mb-3" value='{{ old('air_port', Auth::user()->airport) }}'>
                 <div class="row" style="margin-top: 47px;">
                     <div class="col-6"><button type="submit" class="btn btn-primary w-100"><span>Update </span></button></div>
                     <div class="col-6"><button type="submit" class="btn btn-danger w-100"><span>Cancel </span></button></div>
