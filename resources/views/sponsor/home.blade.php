@@ -160,7 +160,23 @@
                         <p class="event-description"><span class='fw-bold'>Description: </span>{{\Illuminate\Support\Str::limit($post->description, 60, '...')}}</p>
                     </div>
                     <div>
-                        <span class="heart-icon">❤️11</span>
+                        @if ($post->like()->where('user_id', Auth::id())->exists())
+                            <!-- すでにいいねしてたら、解除ボタンを表示 -->
+                            <form action="{{ route('like.destroy', $post->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn">
+                                    <i class="fa-brands fa-gratipay text-danger fa-2x"><span class="text-dark">{{ $post->like->count() }}</span></i> <!-- 赤色 -->
+                                </button>
+                            </form>
+                        @else
+                            <form action="{{ route('like.store', $post->id) }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn">
+                                    <i class="fa-brands fa-gratipay fa-2x">{{ $post->like->count() }}</i> <!-- 通常色 -->
+                                </button>
+                            </form>
+                        @endif
                     </div>
                 </div>
             @empty

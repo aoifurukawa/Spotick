@@ -15,4 +15,9 @@ class Post extends Model
     {
         return $this->hasMany(Reservation::class);
     }
+
+    public function like()
+    {
+        return $this->hasMany(Like::class);
+    }
 }
