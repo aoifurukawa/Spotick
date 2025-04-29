@@ -54,15 +54,34 @@
             </div>
             
             <div class="col-4 text-center">
-                <form action="{{ route('reservation.store', $post_detail->id) }}" method="post">
-                    @csrf
-                    <div class="d-flex align-items-center gap-2">
-                        <label for="tickets" class="form-label text-white mb-0">Number of tickets</label>
-                        <input type="number" name="number_of_tickets" id="tickets" class="form-control" style="width: 20%">
-                        <button type="submit" class="btn btn-dark btn-outline-light">Reserve</button>
-                        <span class="heart-icon">❤️11</span>
-                    </div>
-                </form>
+                <div class="d-flex text-align-center">
+                    <form action="{{ route('reservation.store', $post_detail->id) }}" method="post">
+                        @csrf
+                        <div class="d-flex align-items-center gap-2">
+                            <label for="tickets" class="form-label text-white mb-0">Number of tickets</label>
+                            <input type="number" name="number_of_tickets" id="tickets" class="form-control" style="width: 20%">
+                            <button type="submit" class="btn btn-dark btn-outline-light">Reserve</button>
+                        </div>
+                    </form>
+
+                    @if ($post_detail->like()->where('user_id', Auth::id())->exists())
+                        <!-- すでにいいねしてたら、解除ボタンを表示 -->
+                        <form action="{{ route('like.destroy', $post_detail->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn">
+                                <i class="fa-brands fa-gratipay text-danger fa-2x"><span class="text-white">{{ $post_detail->like->count() }}</span></i> <!-- 赤色 -->
+                            </button>
+                        </form>
+                    @else
+                        <form action="{{ route('like.store', $post_detail->id) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn">
+                                <i class="fa-brands fa-gratipay text-white fa-2x"><span class="text-white">{{ $post_detail->like->count() }}</i> <!-- 通常色 -->
+                            </button>
+                        </form>
+                    @endif
+                </div>
             </div>
         </div>
     </div>
