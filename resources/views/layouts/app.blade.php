@@ -56,14 +56,14 @@
                         @else
                             @if (Auth::user()->role_id==1 || Auth::user()->role_id==3)
                             <li class="d-flex align-items-center gap-5 ">
-                                <a href="{{ route('home') }}" class=" text-white text-decoration-none" style="font-size: 1.0rem">home</a>
-                                <a href="{{ route('sponsor.post') }}" class=" text-white text-decoration-none" style="font-size: 1.0rem">Post</a>
-                                <a href="{{ route('reservation.show') }}" class=" text-white me-5 text-decoration-none" style="font-size: 1.0rem">Schedule</a>
+                                <a href="{{ route('home') }}" class="text-decoration-none" style="font-size: 1.0rem; color: {{ request()->is('home') ? '#99FFFF' : 'white' }}">home</a>
+                                <a href="{{ route('sponsor.post') }}" class="text-decoration-none" style="font-size: 1.0rem; color: {{ request()->is('sponsor/post') ? '#FFFF99' : 'white' }}">Post</a>
+                                <a href="{{ route('reservation.show') }}" class="me-5 text-decoration-none" style="font-size: 1.0rem; color: {{ request()->is('reservation/show') ? '#FF99FF' : 'white' }}">Schedule</a>
                             </li>   
                             @else
                             <li class="d-flex align-items-center gap-5">
-                                <a href="{{ route('home') }}" class=" text-white text-decoration-none" style="font-size: 1.0rem">home</a>
-                                <a href="{{ route('reservation.show') }}" class=" text-white me-5 text-decoration-none" style="font-size: 1.0rem">Schedule</a>
+                                <a href="{{ route('home') }}" class="text-decoration-none" style="font-size: 1.0rem; color: {{ request()->is('home') ? '#99FFFF' : 'white' }}">home</a>
+                                <a href="{{ route('reservation.show') }}" class="me-5 text-decoration-none" style="font-size: 1.0rem; color: {{ request()->is('reservation/show') ? '#FF99FF' : 'white' }}">Schedule</a>
                             </li>
                             @endif                                                                              
 
