@@ -133,18 +133,19 @@
         </div>
 
         <div class="col-9">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-10">
                     <h1 class='display-3  text-center'>All Events</h1>
                 </div>
 
                 <div class="col-2">
-                    <button type="submit" class="btn">
+                    <form action="">
                         <select name="" id="" class="form-select">
-                            <option value="">Date</option>
-                            <option value="">Popular</option>
+                            <option value="1"><button type="submit" class="btn">Posted Date</button></option>
+                            <option value="2"><button type="submit" class="btn">Popular</button></option>
+                            <option value="3"><button type="submit" class="btn">Event Date</button></option>
                         </select>
-                    </button>
+                    </form>
                 </div>
             </div>
 
