@@ -95,7 +95,7 @@
 <div class="container" style="margin: 0 !important;">
     <div class="row">
         <div class="col-3" style="background: linear-gradient(to right, #83bff0, #b0ddf4);">
-            <form action="{{ route('events.research') }}" method="POST">
+            <form action="{{ route('events.research') }}" method="get">
                 @csrf
                 <label for="name" class="form-label fw-bold mt-3">Title</label>
                 <input type="text" name="title" id="name" class='form-control mb-3'>
@@ -139,11 +139,12 @@
                 </div>
 
                 <div class="col-2">
-                    <form action="">
-                        <select name="" id="" class="form-select">
-                            <option value="1"><button type="submit" class="btn">Posted Date</button></option>
-                            <option value="2"><button type="submit" class="btn">Popular</button></option>
-                            <option value="3"><button type="submit" class="btn">Event Date</button></option>
+                    <form action="" method="get">
+                        <select name="sort" id="" class="form-select" onchange="this.form.submit()">
+                            <option value="" hidden>Filter</option>
+                            <option value="1" {{ request('sort') == 1 ? 'selected' : '' }}>{{ request('sort') == 1 ? '◎' : '' }}Posted Date</option>
+                            <option value="2" {{ request('sort') == 2 ? 'selected' : '' }}>{{ request('sort') == 2 ? '◎' : '' }}Popular</option>
+                            <option value="3" {{ request('sort') == 3 ? 'selected' : '' }}>{{ request('sort') == 3 ? '◎' : '' }}Event Date</option>
                         </select>
                     </form>
                 </div>

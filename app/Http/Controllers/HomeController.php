@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -24,9 +25,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $all_posts = $this->post->latest()->get();
+        $sort = $request->input('sort');
+
+        if ($sort == 3) {
+            // イベント日付順（昇順）
+            $all_posts = $this->post->orderBy('date', 'asc')->get();
+        } elseif ($sort == 2) {
+            $all_posts = $this->post->withCount('like')->orderBy('like_count', 'desc')->get();
+        } elseif ($sort == 1) {
+            $all_posts = $this->post->latest()->get();
+        } else {
+            $all_posts = $this->post->latest()->get();
+        }
 
         return view('sponsor/home')->with('all_posts', $all_posts);
 
