@@ -133,21 +133,7 @@
         </div>
 
         <div class="col-9">
-            <div class="row align-items-center">
-                <div class="col-10">
-                    <h1 class='display-3  text-center'>All Events</h1>
-                </div>
-
-                <div class="col-2">
-                    <button type="submit" class="btn">
-                        <select name="" id="" class="form-select">
-                            <option value="">Date</option>
-                            <option value="">Popular</option>
-                        </select>
-                    </button>
-                </div>
-            </div>
-
+            <h1 class='display-3  text-center'>All Events</h1>
             <hr>
             <h3 class="mx-auto" style="width:85%">your condition: <span class='text-danger'>{{$title}} {{$venue}}</span></h3>
             <hr>
@@ -164,7 +150,23 @@
                         <p class="event-description"><span class='fw-bold'>Description: </span>{{\Illuminate\Support\Str::limit($post->description, 60, '...')}}</p>
                     </div>
                     <div>
-                        <span class="heart-icon">❤️11</span>
+                        @if ($post->like()->where('user_id', Auth::id())->exists())
+                            <!-- すでにいいねしてたら、解除ボタンを表示 -->
+                            <form action="{{ route('like.destroy', $post->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn">
+                                    <i class="fa-brands fa-gratipay text-danger fa-2x"><span class="text-dark">{{ $post->like->count() }}</span></i> <!-- 赤色 -->
+                                </button>
+                            </form>
+                        @else
+                            <form action="{{ route('like.store', $post->id) }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn">
+                                    <i class="fa-brands fa-gratipay fa-2x">{{ $post->like->count() }}</i> <!-- 通常色 -->
+                                </button>
+                            </form>
+                        @endif
                     </div>
                 </div>
             @empty
