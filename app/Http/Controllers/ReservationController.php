@@ -43,4 +43,12 @@ class ReservationController extends Controller
         return view('sponsor.schedule')->with('my_reservations', $my_reservations)
             ->with('my_posts', $my_posts);
     }
+
+    public function destroy($id)
+    {
+        $reservation_delete = $this->reservation->findOrFail($id);
+        $reservation_delete->delete();
+
+        return redirect()->route('reservation.show');
+    }
 }

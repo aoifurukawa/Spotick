@@ -12,7 +12,7 @@
         padding: 0;
         max-width: 1600px;
         margin: 20px auto;
-        margin-left: 40px;
+        margin-left: 20px;
     }
 
     .event-image {
@@ -60,7 +60,7 @@
         transform: scale(1.2);
     }
 </style>
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="padding-top: 40px; background-color: #f0f0f0;">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -69,17 +69,17 @@
     </div>
 
     <div class="carousel-inner" data-bs-interval="5000">
-      <div class="carousel-item active">
-        <img src="{{ asset('images/baseball-home.jpg') }}" class="d-block w-100 img-" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
+      <div class="carousel-item active" style="background: linear-gradient(to bottom, #f0f0f0 30%, #aff2c485 30%);">
+        <img src="{{ asset('images/baseball-home.jpg') }}" class="d-block mx-auto" alt="..."  style="height: 400px; width: 80%; object-fit:cover; border-radius: 50px;">
       </div>
-      <div class="carousel-item">
-        <img src="{{ asset('images/basket-gall.jpg') }}" class="d-block w-100" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
+      <div class="carousel-item" style="background: linear-gradient(to bottom, #f0f0f0 30%, #aff2c485 30%);">
+        <img src="{{ asset('images/basket-gall.jpg') }}" class="d-block mx-auto" alt="..."  style="height: 400px; width: 80%; object-fit:cover; border-radius: 50px;">
       </div>
-      <div class="carousel-item">
-        <img src="{{ asset('images/soccer-home.jpg') }}" class="d-block w-100" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
+      <div class="carousel-item" style="background: linear-gradient(to bottom, #f0f0f0 30%, #aff2c485 30%);">
+        <img src="{{ asset('images/soccer-home.jpg') }}" class="d-block mx-auto" alt="..."  style="height: 400px; width: 80%; object-fit:cover; border-radius: 50px;">
       </div>
-      <div class="carousel-item">
-        <img src="{{ asset('images/icehockey-home2.avif') }}" class="d-block w-100" alt="..." style="height: 400px; width: 100%; object-fit:cover;">
+      <div class="carousel-item" style="background: linear-gradient(to bottom, #f0f0f0 30%, #aff2c485 30%);">
+        <img src="{{ asset('images/icehockey-home2.avif') }}" class="d-block mx-auto" alt="..." style="height: 400px; width: 80%; object-fit:cover; border-radius: 50px;">
       </div>
     </div>
 
@@ -94,57 +94,13 @@
 </div>
   
   
-<div class="container" style="margin: 0 !important;">
-    <div class="row">
-        <div class="col-3" style="background: linear-gradient(to right, #f0a9fb, #f6c5f8);">
-            <form action="" method="POST">
-                <label for="name" class="form-label fw-bold mt-3">Name</label>
-                <input type="text" name="name" id="name" class='form-control mb-3'>
-
-                <label for="name" class="form-label fw-bold">Location</label>
-                <input type="text" name="name" id="name" class='form-control mb-3'>
-
-                <label for="content" class="form-label fw-bold">Content</label>
-                <select name="content" id="content" class="form-select mb-3">
-                    <option value="" hidden></option>
-                    <option value="">match</option>
-                    <option value="">Fan festival</option>
-                </select>
-
-                <label for="date" class="form-label fw-bold">Date</label>
-                <input type="date" name="date" id="date" class='form-control mb-3'>
-
-
-                <label for="date" class="form-label fw-bold">Term</label>
-                <input type="date" name="date" id="date" class='form-control mb-3'>
-                <p class="text-center fw-bold" style="transform: rotate(90deg); font-size: 2rem;">~</p>
-                <input type="date" name="date" id="date" class='form-control mb-3'>
-
-                <label for="price" class="form-label fw-bold">Max price</label>
-                <input type="number" name="price" id="price" class='form-control mb-5' min="0" placeholder="$">
-
-                <button type="submit" class='btn float-end'><i class="fa-solid fa-magnifying-glass fs-5"></i></button>
-
-            </form>
-        </div>
-
-        <div class="col-9">
-            <div class="row align-items-center">
-                <div class="col-10">
-                    <h1 class='display-3 text-center'>Your Events</h1>
-                </div>
-
-                <div class="col-2">
-                    <button type="submit" class="btn">
-                        <select name="" id="" class="form-select">
-                            <option value="">Date</option>
-                            <option value="">Popular</option>
-                        </select>
-                    </button>
-                </div>
-            </div>
-
-            <h3 class="ms-5">As User</h3>
+<h1 class='display-3 text-center' style="padding: 1rem 2rem;
+                border-bottom: 6px double #000;
+                background-color: #aff2c485">Your Events</h1>
+<div style="width: 95%; margin: auto; margin-bottom: 150px;">
+    <div class="row ">
+        <div class="col-6">
+            <h3 class="ms-5 text-center">As User</h3>
             <hr>
 
             @forelse ($my_reservations as $reservation)
@@ -152,11 +108,11 @@
                     <a href="{{ route('event-detail.show', $reservation->id) }}"><img src="{{ $reservation->post->picture_1 }}" alt="Event Image" class="event-image"></a>
                     <div class="event-content">
                         <div class="event-meta">
-                            <span class="event-title">{{\Illuminate\Support\Str::limit($reservation->post->title, 18, '...')}}</span>
-                            <span>{{$reservation->post->date}} </span>
-                            <span>{{$reservation->post->venue}}</span>
+                            <span class="event-title">{{\Illuminate\Support\Str::limit($reservation->post->title, 30, '...')}}</span>
                         </div>
-                        <p class="event-description"><span class='fw-bold'>Description: </span>{{\Illuminate\Support\Str::limit($reservation->post->description, 60, '...')}}</p>
+                        <div>
+                            <span>{{$reservation->post->date}}</span>
+                        </div>
                     </div>
                     <div>
                         @if ($reservation->post->like()->where('user_id', Auth::id())->exists())
@@ -178,13 +134,23 @@
                         @endif
                     </div>
                 </div>
+                <div class="d-flex justify-content-end gap-2">
+                    <button type="submit" class="btn btn-danger btn-outline-white" data-bs-toggle="modal" data-bs-target="#delete-{{$reservation->post->id}}">Cancel</button>
+                    @include('sponsor.modal.schedule.reserve-delete')
+                    <form action="">
+                        @csrf
+                        <button type="submit" class="btn btn-primary btn-outline-white">Edit</button>
+                    </form>                    
+                </div>
             @empty
                 <h3 class="text-center">
                     No post yet
                 </h3>
             @endforelse
+        </div>
 
-            <h3 class="ms-5">As sponsor</h3>
+        <div class="col-6">
+            <h3 class="ms-5 text-center">As sponsor</h3>
             <hr>
 
             @forelse ($my_posts as $post)
@@ -193,10 +159,10 @@
                     <div class="event-content">
                         <div class="event-meta">
                             <span class="event-title">{{\Illuminate\Support\Str::limit($post->title, 18, '...')}}</span>
-                            <span>{{$post->date}} </span>
-                            <span>{{$post->venue}}</span>
                         </div>
-                        <p class="event-description"><span class='fw-bold'>Description: </span>{{\Illuminate\Support\Str::limit($post->description, 60, '...')}}</p>
+                        <div>
+                            <span>{{$post->date}}</span>
+                        </div>
                     </div>
                     <div>
                         @if ($post->like()->where('user_id', Auth::id())->exists())
@@ -241,8 +207,13 @@
                     </h3>
                 @endif
             @endforelse
-            
         </div>
+    </div>
+</div>
+
+<div class="footer d-flex align-items-center justify-content-center" style="position: fixed; width: 100%; background-color: black; bottom: 0; height: 70px;">
+    <div class="container">
+        
     </div>
 </div>
 
