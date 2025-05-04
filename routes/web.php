@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
     // reserve
     Route::post('reservation/{post_id}/store', [App\Http\Controllers\ReservationController::class, 'store'])->name('reservation.store');
     Route::get('reservation/show', [App\Http\Controllers\ReservationController::class, 'show'])->name('reservation.show');
+    Route::delete('reservation/{post_id}/destroy', [App\Http\Controllers\ReservationController::class, 'destroy'])->name('reservation.destroy');
 
     // like
     Route::post('like/{post_id}/store', [App\Http\Controllers\LikeController::class, 'store'])->name('like.store');

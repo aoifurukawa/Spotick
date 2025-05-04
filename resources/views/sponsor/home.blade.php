@@ -59,38 +59,50 @@
         transform: scale(1.2);
     }
 </style>
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+<div class="position-relative" style="margin-bottom: 0px;">
+    <!-- Carousel -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      </div>
+  
+      <div class="carousel-inner" data-bs-interval="5000">
+        <div class="carousel-item active">
+          <img src="{{ asset('images/baseball-home.jpg') }}" class="d-block w-100" alt="..." style="height: 400px; object-fit: cover;">
+        </div>
+        <div class="carousel-item">
+          <img src="{{ asset('images/basket-gall.jpg') }}" class="d-block w-100" alt="..." style="height: 400px; object-fit: cover;">
+        </div>
+        <div class="carousel-item">
+          <img src="{{ asset('images/soccer-home.jpg') }}" class="d-block w-100" alt="..." style="height: 400px; object-fit: cover;">
+        </div>
+        <div class="carousel-item">
+          <img src="{{ asset('images/icehockey-home2.avif') }}" class="d-block w-100" alt="..." style="height: 400px; object-fit: cover;">
+        </div>
+      </div>
+  
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-
-    <div class="carousel-inner" data-bs-interval="5000">
-      <div class="carousel-item active">
-        <img src="{{ asset('images/baseball-home.jpg') }}" class="d-block w-100 img-" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
-      </div>
-      <div class="carousel-item">
-        <img src="{{ asset('images/basket-gall.jpg') }}" class="d-block w-100" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
-      </div>
-      <div class="carousel-item">
-        <img src="{{ asset('images/soccer-home.jpg') }}" class="d-block w-100" alt="..."  style="height: 400px; width: 100%; object-fit:cover;">
-      </div>
-      <div class="carousel-item">
-        <img src="{{ asset('images/icehockey-home2.avif') }}" class="d-block w-100" alt="..." style="height: 400px; width: 100%; object-fit:cover;">
-      </div>
+  
+    <!-- 重ねるカード -->
+    <div class="position-absolute translate-middle bg-white p-4 shadow rounded" style="width: 80%; max-width: 500px; z-index: 10; opacity: 0.75; top: 50%;
+left: 30%;">
+      <h5 class="mb-2 fw-bold">Enjoy Sports Like Never Before!</h5>
+      <p class="mb-1">Feel the thrill of the game, the energy of the crowd, and the joy of cheering together.</p>
+      <p class="mb-0">Find your favorite team and book your match easily right here!</p>
     </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-</div>
+  </div>
+  
 
 <div class="container" style="margin: 0 !important;">
     <div class="row">
