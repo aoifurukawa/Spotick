@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
     // sponsor
     Route::get('/admin/sponsors-list', [UsersController::class, 'sponsors_show'])->name('sponsors');
+    Route::get('/admin/{sponsor_id}/information', [UsersController::class, 'sponsors_info_show'])->name('sponsor-info.show');
 
     // user
     Route::get('/admin/users-list', [UsersController::class, 'users_show'])->name('users');

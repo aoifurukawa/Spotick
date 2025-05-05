@@ -28,111 +28,32 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th style="width: 20%">id</th>
+                            <th style="width: 20%">Icon</th>
                             <th style="width: 40%">Name</th>
                             <th style="width: 40%">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @forelse ($all_sponsors as $sponsor)
                         <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
                             <td>
-                                <button type="submit" class="btn btn-danger">Show</button>
-                                <button type="submit" class="btn btn-danger">Hide</button>
-                                <button type="submit" class="btn btn-danger">Unhide</button>
-                            </td>
-                        </tr>
+                                @if ($sponsor->avatar)
+                                    <img src={{ $sponsor->avatar }} alt="" style="height: 45px; width: 45px; border-radius: 50%; border: 1px solid black">
 
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
+                                @else
+                                    <img src={{ asset('images/doll.png') }} alt="" style="height: 20%; width: 20%; border-radius: 50%; border: 1px solid black">
+                                @endif
+                            </td>
+                            <td class="align-middle">{{$sponsor->name}}</td>
                             <td>
-                                <button type="submit" class="btn btn-danger">Show</button>
+                                <a href="{{ route('admin.sponsor-info.show', $sponsor->id) }}" class="btn btn-primary btn-outline-white">show</a>
                                 <button type="submit" class="btn btn-danger">Hide</button>
                                 <button type="submit" class="btn btn-danger">Unhide</button>
                             </td>
                         </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Show</button>
-                                <button type="submit" class="btn btn-danger">Hide</button>
-                                <button type="submit" class="btn btn-danger">Unhide</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Show</button>
-                                <button type="submit" class="btn btn-danger">Hide</button>
-                                <button type="submit" class="btn btn-danger">Unhide</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Show</button>
-                                <button type="submit" class="btn btn-danger">Hide</button>
-                                <button type="submit" class="btn btn-danger">Unhide</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Show</button>
-                                <button type="submit" class="btn btn-danger">Hide</button>
-                                <button type="submit" class="btn btn-danger">Unhide</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Show</button>
-                                <button type="submit" class="btn btn-danger">Hide</button>
-                                <button type="submit" class="btn btn-danger">Unhide</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Show</button>
-                                <button type="submit" class="btn btn-danger">Hide</button>
-                                <button type="submit" class="btn btn-danger">Unhide</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Show</button>
-                                <button type="submit" class="btn btn-danger">Hide</button>
-                                <button type="submit" class="btn btn-danger">Unhide</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Show</button>
-                                <button type="submit" class="btn btn-danger">Hide</button>
-                                <button type="submit" class="btn btn-danger">Unhide</button>
-                            </td>
-                        </tr>
+                        @empty
+                            
+                        @endforelse
                     </tbody>
                 </table>
             </div>
