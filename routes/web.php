@@ -31,7 +31,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user/payment', function () {
         return view('User.payment');
     })->name('payment');
+    Route::delete('sponsor/{id}/post-destroy', [App\Http\Controllers\PostController::class, 'destroy'])->name('post.destroy');
 
+    // Reserach
     Route::get('/research', [App\Http\Controllers\PostController::class, 'research'])->name('events.research');
 
     // schedule
