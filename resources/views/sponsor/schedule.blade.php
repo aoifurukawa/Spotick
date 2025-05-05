@@ -105,7 +105,7 @@
 
             @forelse ($my_reservations as $reservation)
                 <div class="event-card">
-                    <a href="{{ route('event-detail.show', $reservation->id) }}"><img src="{{ $reservation->post->picture_1 }}" alt="Event Image" class="event-image"></a>
+                    <a href="{{ route('event-detail.show', $reservation->post->id) }}"><img src="{{ $reservation->post->picture_1 }}" alt="Event Image" class="event-image"></a>
                     <div class="event-content">
                         <div class="event-meta">
                             <span class="event-title">{{\Illuminate\Support\Str::limit($reservation->post->title, 30, '...')}}</span>
@@ -135,12 +135,8 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end gap-2">
-                    <button type="submit" class="btn btn-danger btn-outline-white" data-bs-toggle="modal" data-bs-target="#delete-{{$reservation->post->id}}">Cancel</button>
-                    @include('sponsor.modal.schedule.reserve-delete')
-                    <form action="">
-                        @csrf
-                        <button type="submit" class="btn btn-primary btn-outline-white">Edit</button>
-                    </form>                    
+                    <button type="submit" class="btn btn-danger btn-outline-white  btn-sm mb-4" data-bs-toggle="modal" data-bs-target="#delete-{{$reservation->post->id}}">Cancel</button>
+                    @include('sponsor.modal.schedule.reserve-delete')                 
                 </div>
             @empty
                 <h3 class="text-center">
@@ -185,15 +181,14 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end gap-2">
-                    <form action="">
-                        @csrf
-                        <button type="submit" class="btn btn-danger btn-outline-white">Delete</button>
-                    </form>
-                    <form action="">
-                        @csrf
-                        <button type="submit" class="btn btn-primary btn-outline-white">Edit</button>
-                    </form>                    
-                    <a class="btn btn-warning btn-outline-white" href="{{ route('schedule.participants', $post->id) }}">Participants List</a>
+                    @if ($post->reservation->isNotEmpty())
+                        <button type="button" class="btn btn-secondary btn-sm" disabled>Delete</button>
+                    @else
+                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete-post-{{ $post->id }}">Delete</button>
+                        @include('sponsor.modal.schedule.post-delete')
+                    @endif
+                    <button type="submit" class="btn btn-primary btn-outline-white  btn-sm">Edit</button>                
+                    <a class="btn btn-warning btn-outline-white btn-sm" href="{{ route('schedule.participants', $post->id) }}">Participants List ( <span class="fw-bold">{{$post->reservation->count()}}</span> )</a>
                 </div>
                 <br>
             @empty

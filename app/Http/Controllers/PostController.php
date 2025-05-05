@@ -180,4 +180,12 @@ class PostController extends Controller
 
         return view('sponsor.participant-list')->with('posts', $posts);
     }
+
+    public function destroy($id)
+    {
+        $destroy_post = $this->post->findOrFail($id);
+        $destroy_post->delete();
+
+        return redirect()->route('reservation.show');
+    }
 }
