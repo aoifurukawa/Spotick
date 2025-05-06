@@ -61,6 +61,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 
     // content
     Route::get('/admin/users-content', [ContentsController::class, 'contents_show'])->name('contents');
+    Route::post('admin/content/store', [ContentsController::class, 'store'])->name('content.store');
 
 });
 

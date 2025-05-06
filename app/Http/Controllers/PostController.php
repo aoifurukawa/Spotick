@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Content;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -10,9 +11,12 @@ class PostController extends Controller
 {
     private $post;
 
-    public function __construct(Post $post)
+    private $content;
+
+    public function __construct(Post $post, Content $content)
     {
         $this->post = $post;
+        $this->content = $content;
     }
 
     public function store(Request $request, $id)
@@ -169,9 +173,12 @@ class PostController extends Controller
 
         $results = $query->get();
 
+        $all_content = $this->content->oldest()->get();
+
         return view('research-result')->with('results', $results)
             ->with('title', $title)
-            ->with('venue', $venue);
+            ->with('venue', $venue)
+            ->with('all_content', $all_content);
     }
 
     public function show_participants($id)

@@ -26,11 +26,15 @@
 
 
             <div class="col-9">
-                <form action="" method="post">
+                <form action="{{ route('admin.content.store') }}" method="post">
+                    @csrf
                     <div class="row w-75 mx-auto mb-3">
                         <div class="col-10">
-                            <input type="text" name="content" id="content" class="form-control">
+                            <input type="text" name="name" id="content" class="form-control">
                         </div>
+                        @error('content')
+                            <p>add content</p>
+                        @enderror
                         
                         <div class="col-2">
                             <button type="submit" class="btn btn-primary">Add</button>
@@ -46,68 +50,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Edit</button>
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Edit</button>
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Edit</button>
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Edit</button>
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Edit</button>
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Edit</button>
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>Aoi Furukawa</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger">Edit</button>
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
+                        @forelse ($all_contents as $content)
+                            <tr>
+                                <td>{{$content->id}}</td>
+                                <td>{{$content->name}}</td>
+                                <td>
+                                    <button type="submit" class="btn btn-danger btn-sm">Edit</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </td>
+                            </tr>
+                        @empty
+                            <p class="fw-bold">No content yet</p>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

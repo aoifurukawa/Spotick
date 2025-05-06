@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Content;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -9,15 +10,18 @@ class HomeController extends Controller
 {
     private $post;
 
+    private $content;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(Post $post)
+    public function __construct(Post $post, Content $content)
     {
         $this->middleware('auth');
         $this->post = $post;
+        $this->content = $content;
     }
 
     /**
@@ -40,7 +44,10 @@ class HomeController extends Controller
             $all_posts = $this->post->latest()->get();
         }
 
-        return view('sponsor/home')->with('all_posts', $all_posts);
+        $all_content = $this->content->oldest()->get();
+
+        return view('sponsor/home')->with('all_posts', $all_posts)
+            ->with('all_content', $all_content);
 
     }
 }
