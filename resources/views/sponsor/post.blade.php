@@ -23,11 +23,12 @@
                         </div>
                         
                         <div class="col-4">
-                            <label for="content" class="form-label fw-bold">Content</label>
-                            <select name="content" id="content" class="form-select">
+                            <label for="event-content" class="form-label fw-bold">Content</label>
+                            <select name="content" id="event-content" class="form-select">
                                 <option value="" hidden></option>
-                                <option value="1">match</option>
-                                <option value="2">Fan festival</option>
+                                @foreach ($all_content as $content)
+                                <option value="{{$content->name}}">{{$content->name}}</option>
+                                @endforeach
                             </select>
                             @error('content')
                                 <div class="text-danger">{{$message}}</div>
@@ -64,7 +65,6 @@
                                 <div class="text-danger">{{$message}}</div>
                             @enderror
                         </div>
-                        
                     </div>
 
                     <label for="venue" class='form-label fw-bold mt-3'>Venue</label>
@@ -104,20 +104,6 @@
                             @enderror
                         </div>
                        
-                    </div>
-
-                    <div class="row">
-                        <div class="col-4">
-                            <label for="background-color" class="form-label fw-bold mt-3">Background Color</label>
-                            <select name="background_color" id="background-color" class="form-select">
-                                <option value="" hidden>Grey</option>
-                                <option value="red">red</option>
-                                <option value="blue">blue</option>
-                            </select>
-                        </div>
-                        @error('background_color')
-                            <div class="text-danger">{{$message}}</div>
-                        @enderror
                     </div>
 
                     <label for="sponsor_name" class="form-label fw-bold mt-3">Your Name</label>

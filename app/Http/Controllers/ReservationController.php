@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Content;
 use App\Models\Post;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
@@ -13,10 +14,13 @@ class ReservationController extends Controller
 
     private $post;
 
-    public function __construct(Reservation $reservation, Post $post)
+    private $content;
+
+    public function __construct(Reservation $reservation, Post $post, Content $content)
     {
         $this->reservation = $reservation;
         $this->post = $post;
+        $this->content = $content;
     }
 
     public function store(Request $request, $post_id)
@@ -39,9 +43,11 @@ class ReservationController extends Controller
     {
         $my_reservations = $this->reservation->where('user_id', Auth::id())->latest()->get();
         $my_posts = $this->post->where('user_id', Auth::id())->latest()->get();
+        $all_content = $this->content->oldest()->get();
 
         return view('sponsor.schedule')->with('my_reservations', $my_reservations)
-            ->with('my_posts', $my_posts);
+            ->with('my_posts', $my_posts)
+            ->with('all_content', $all_content);
     }
 
     public function destroy($id)

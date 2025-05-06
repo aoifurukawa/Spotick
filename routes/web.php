@@ -20,11 +20,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/home/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('user.update');
     Route::get('/profile/{id}/show', [App\Http\Controllers\UserController::class, 'show'])->name('profile.show');
 
-    Route::get('/sponsor/post', function () {
-        $user = Auth::user();
+    // Route::get('/sponsor/post', function () {
+    //     $user = Auth::user();
 
-        return view('sponsor.post')->with('user', $user);
-    })->name('sponsor.post');
+    //     return view('sponsor.post')->with('user', $user);
+    // })->name('sponsor.post');
+    Route::get('/sponsor/post', [App\Http\Controllers\PostController::class, 'page_show'])->name('sponsor.post');
 
     Route::post('sponsor/{id}/post-store', [App\Http\Controllers\PostController::class, 'store'])->name('post.store');
     Route::get('sponsor/{id}/event-detail', [App\Http\Controllers\PostController::class, 'show'])->name('event-detail.show');
@@ -32,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('User.payment');
     })->name('payment');
     Route::delete('sponsor/{id}/post-destroy', [App\Http\Controllers\PostController::class, 'destroy'])->name('post.destroy');
+    Route::patch('/sponsor/{id}/post-update', [App\Http\Controllers\PostController::class, 'update'])->name('post.update');
 
     // Reserach
     Route::get('/research', [App\Http\Controllers\PostController::class, 'research'])->name('events.research');

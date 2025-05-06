@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Content;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,10 +13,13 @@ class UserController extends Controller
 
     private $post;
 
-    public function __construct(User $user, Post $post)
+    private $content;
+
+    public function __construct(User $user, Post $post, Content $content)
     {
         $this->user = $user;
         $this->post = $post;
+        $this->content = $content;
     }
 
     public function showForm()
@@ -50,8 +54,10 @@ class UserController extends Controller
         $user->save();
 
         $all_posts = $this->post->latest()->get();
+        $all_content = $this->content->oldest()->get();
 
-        return view('sponsor.home')->with('all_posts', $all_posts);
+        return view('sponsor.home')->with('all_posts', $all_posts)
+            ->with('all_content', $all_content);
     }
 
     public function show($id)

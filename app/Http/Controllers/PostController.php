@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Content;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class PostController extends Controller
@@ -19,12 +20,21 @@ class PostController extends Controller
         $this->content = $content;
     }
 
+    public function page_show()
+    {
+        $user = Auth::user();
+        $all_content = $this->content->oldest()->get();
+
+        return view('sponsor.post')->with('user', $user)
+            ->with('all_content', $all_content);
+    }
+
     public function store(Request $request, $id)
     {
         $request->validate([
 
             'title' => 'required|string|max:255',
-            'content' => 'required|integer', // 文章なら text に直したほうがいいかも
+            'content' => 'required|string|max:50', // 文章なら text に直したほうがいいかも
             'description' => 'required|string',
             'date' => 'required|date',
             'price' => 'required|integer|min:0',
@@ -35,7 +45,6 @@ class PostController extends Controller
             'picture_2' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'picture_3' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'sponsor_name' => 'required|string|max:255',
-            'background_color' => 'required|string',
             'mail_address' => 'required|email',
             'insta_url' => 'nullable|url',
             'facebook_url' => 'nullable|url',
@@ -43,14 +52,23 @@ class PostController extends Controller
         ]);
 
         $this->post->user_id = $id;
+        // dd($this->post->user_id);
         $this->post->title = $request->title;
+        // dd($this->post->title);
         $this->post->content = $request->content;
+        // dd($this->post->content);
         $this->post->description = $request->description;
+        // dd($this->post->description);
         $this->post->date = $request->date;
+        // dd($this->post->date);
         $this->post->price = $request->price;
+        // dd($this->post->price);
         $this->post->number_of_tickets = $request->number_of_tickets;
+        // dd($this->post->number_of_tickets);
         $this->post->venue = $request->venue;
+        // dd($this->post->venue);
         $this->post->address = $request->address;
+        // dd($this->post->address);
 
         if ($request->hasFile('picture_1')) {
             $file = $request->file('picture_1');
@@ -68,7 +86,6 @@ class PostController extends Controller
         }
 
         $this->post->sponsor_name = $request->sponsor_name;
-        $this->post->background_color = $request->background_color;
         $this->post->mail_address = $request->mail_address;
         $this->post->insta_url = $request->insta_url;
         $this->post->facebook_url = $request->facebook_url;
@@ -186,6 +203,11 @@ class PostController extends Controller
         $posts = $this->post->findOrFail($id);
 
         return view('sponsor.participant-list')->with('posts', $posts);
+    }
+
+    public function update($id)
+    {
+        return 'update';
     }
 
     public function destroy($id)

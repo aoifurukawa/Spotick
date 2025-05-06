@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->text('title');
-            $table->integer('content');
+            $table->text('content');
             $table->text('description');
             $table->dateTime('date');
             $table->integer('price');
@@ -25,7 +25,6 @@ return new class extends Migration
             $table->longText('picture_1');
             $table->longText('picture_2');
             $table->longText('picture_3');
-            $table->string('background_color');
             $table->text('sponsor_name');
             $table->text('mail_address');
             $table->text('insta_url')->nullable();

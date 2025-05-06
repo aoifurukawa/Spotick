@@ -187,7 +187,8 @@
                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete-post-{{ $post->id }}">Delete</button>
                         @include('sponsor.modal.schedule.post-delete')
                     @endif
-                    <button type="submit" class="btn btn-primary btn-outline-white  btn-sm">Edit</button>                
+                    <button type="submit" class="btn btn-primary btn-outline-white  btn-sm" data-bs-toggle="modal" data-bs-target="#delete-update-{{ $post->id }}">Edit</button>
+                    @include('sponsor.modal.schedule.post-update')                
                     <a class="btn btn-warning btn-outline-white btn-sm" href="{{ route('schedule.participants', $post->id) }}">Participants List ( <span class="fw-bold">{{$post->reservation->count()}}</span> )</a>
                 </div>
                 <br>
