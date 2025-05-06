@@ -95,7 +95,7 @@
 <div class="container" style="margin: 0 !important;">
     <div class="row">
         <div class="col-3" style="background: linear-gradient(to right, #83bff0, #b0ddf4);">
-            <form action="{{ route('events.research') }}" method="POST">
+            <form action="{{ route('events.research') }}" method="get">
                 @csrf
                 <label for="name" class="form-label fw-bold mt-3">Title</label>
                 <input type="text" name="title" id="name" class='form-control mb-3'>
@@ -106,8 +106,9 @@
                 <label for="content" class="form-label fw-bold">Content</label>
                 <select name="content" id="content" class="form-select mb-3">
                     <option value="" hidden></option>
-                    <option value="1">match</option>
-                    <option value="2">Fan festival</option>
+                    @foreach ($all_content as $content)
+                    <option value="{{$content->name}}">{{$content->name}}</option>
+                    @endforeach
                 </select>
 
                 <label for="date" class="form-label fw-bold">Date</label>

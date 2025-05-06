@@ -118,8 +118,9 @@ left: 30%;">
                 <label for="content" class="form-label fw-bold">Content</label>
                 <select name="content" id="content" class="form-select mb-3">
                     <option value="" hidden></option>
-                    <option value="1">match</option>
-                    <option value="2">Fan festival</option>
+                    @foreach ($all_content as $content)
+                    <option value="{{$content->name}}">{{$content->name}}</option>
+                    @endforeach
                 </select>
 
                 <label for="date" class="form-label fw-bold">Date</label>
