@@ -183,12 +183,13 @@
                 <div class="d-flex justify-content-end gap-2">
                     @if ($post->reservation->isNotEmpty())
                         <button type="button" class="btn btn-secondary btn-sm" disabled>Delete</button>
+                        <button type="button" class="btn btn-secondary btn-sm" disabled>Edit</button>
                     @else
                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete-post-{{ $post->id }}">Delete</button>
                         @include('sponsor.modal.schedule.post-delete')
+                        <button type="submit" class="btn btn-primary btn-outline-white  btn-sm" data-bs-toggle="modal" data-bs-target="#delete-update-{{ $post->id }}">Edit</button>
+                        @include('sponsor.modal.schedule.post-update')  
                     @endif
-                    <button type="submit" class="btn btn-primary btn-outline-white  btn-sm" data-bs-toggle="modal" data-bs-target="#delete-update-{{ $post->id }}">Edit</button>
-                    @include('sponsor.modal.schedule.post-update')                
                     <a class="btn btn-warning btn-outline-white btn-sm" href="{{ route('schedule.participants', $post->id) }}">Participants List ( <span class="fw-bold">{{$post->reservation->count()}}</span> )</a>
                 </div>
                 <br>
