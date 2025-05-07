@@ -205,9 +205,62 @@ class PostController extends Controller
         return view('sponsor.participant-list')->with('posts', $posts);
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        return 'update';
+        $request->validate([
+
+            'title' => 'required|string|max:255',
+            'content' => 'required|string|max:50', // 文章なら text に直したほうがいいかも
+            'description' => 'required|string',
+            'date' => 'required|date',
+            'price' => 'required|integer|min:0',
+            'number_of_tickets' => 'required|integer|min:1',
+            'venue' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'picture_1' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // ファイルアップロードなら別の対応が必要
+            'picture_2' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'picture_3' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'sponsor_name' => 'required|string|max:255',
+            'mail_address' => 'required|email',
+            'insta_url' => 'nullable|url',
+            'facebook_url' => 'nullable|url',
+            'x_url' => 'nullable|url',
+        ]);
+
+        $updated_post = $this->post->findOrFail($id);
+        $updated_post->title = $request->title;
+        $updated_post->content = $request->content;
+        $updated_post->description = $request->description;
+        $updated_post->date = $request->date;
+        $updated_post->price = $request->price;
+        $updated_post->number_of_tickets = $request->number_of_tickets;
+        $updated_post->venue = $request->venue;
+        $updated_post->address = $request->address;
+        $updated_post->sponsor_name = $request->sponsor_name;
+        $updated_post->mail_address = $request->mail_address;
+        $updated_post->insta_url = $request->insta_url;
+        $updated_post->facebook_url = $request->facebook_url;
+        $updated_post->x_url = $request->x_url;
+
+        // picture
+        if ($request->hasFile('picture_1')) {
+            $file = $request->file('picture_1');
+            $updated_post->picture_1 = 'data:image/'.$file->extension().';base64,'.base64_encode(file_get_contents($file));
+        }
+
+        if ($request->hasFile('picture_2')) {
+            $file = $request->file('picture_2');
+            $updated_post->picture_2 = 'data:image/'.$file->extension().';base64,'.base64_encode(file_get_contents($file));
+        }
+
+        if ($request->hasFile('picture_3')) {
+            $file = $request->file('picture_3');
+            $updated_post->picture_3 = 'data:image/'.$file->extension().';base64,'.base64_encode(file_get_contents($file));
+        }
+
+        $updated_post->save();
+
+        return redirect()->route('reservation.show');
     }
 
     public function destroy($id)
