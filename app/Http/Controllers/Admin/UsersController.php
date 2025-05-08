@@ -24,7 +24,16 @@ class UsersController extends Controller
 
     public function sponsors_info_show($id)
     {
-        return 'hello';
+        $sponsor = $this->user->findOrFail($id);
+
+        return view('admin.sponsor-info')->with('sponsor', $sponsor);
+    }
+
+    public function users_info_show($id)
+    {
+        $user = $this->user->findOrFail($id);
+
+        return view('admin.user-info')->with('user', $user);
     }
 
     public function users_show()

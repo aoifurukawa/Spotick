@@ -55,8 +55,10 @@
                                 <td>{{$content->id}}</td>
                                 <td>{{$content->name}}</td>
                                 <td>
-                                    <button type="submit" class="btn btn-danger btn-sm">Edit</button>
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#content-edit-{{ $content->id }}">Edit</button>
+                                    @include('admin.modal.content-edit')
+                                    <button type="submit" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#content-delete-{{ $content->id }}">Delete</button>
+                                    @include('admin.modal.content-delete')
                                 </td>
                             </tr>
                         @empty
