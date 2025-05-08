@@ -47,7 +47,7 @@
                             </td>
                             <td class="align-middle">{{$user->name}}</td>
                             <td>
-                                <a href="{{ route('admin.sponsor-info.show', $user->id) }}" class="btn btn-primary btn-outline-white">show</a>
+                                <a href="{{ route('admin.user-info.show', $user->id) }}" class="btn btn-primary btn-outline-white">show</a>
                                 <button type="submit" class="btn btn-danger">Hide</button>
                                 <button type="submit" class="btn btn-danger">Unhide</button>
                             </td>

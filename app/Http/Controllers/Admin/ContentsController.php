@@ -33,4 +33,17 @@ class ContentsController extends Controller
 
         return view('admin.content-list')->with('all_contents', $all_contents);
     }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|min:1|max:1000',
+        ]);
+
+        $updated_content = $this->content->findOrFail($id);
+        $updated_content->name = $request->name;
+        $updated_content->save();
+
+        return redirect()->route('admin.contents');
+    }
 }

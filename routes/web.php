@@ -56,14 +56,16 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
     // sponsor
     Route::get('/admin/sponsors-list', [UsersController::class, 'sponsors_show'])->name('sponsors');
-    Route::get('/admin/{sponsor_id}/information', [UsersController::class, 'sponsors_info_show'])->name('sponsor-info.show');
+    Route::get('/admin/{id}/sponsor-information', [UsersController::class, 'sponsors_info_show'])->name('sponsor-info.show');
 
     // user
     Route::get('/admin/users-list', [UsersController::class, 'users_show'])->name('users');
+    Route::get('/admin/{id}/user-information', [UsersController::class, 'users_info_show'])->name('user-info.show');
 
     // content
-    Route::get('/admin/users-content', [ContentsController::class, 'contents_show'])->name('contents');
-    Route::post('admin/content/store', [ContentsController::class, 'store'])->name('content.store');
+    Route::get('/users-content', [ContentsController::class, 'contents_show'])->name('contents');
+    Route::post('/content/store', [ContentsController::class, 'store'])->name('content.store');
+    Route::patch('/content/{id}/update', [ContentsController::class, 'update'])->name('content.update');
 
 });
 
