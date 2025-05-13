@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ContentsController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\PayPalController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -68,6 +69,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::patch('/content/{id}/update', [ContentsController::class, 'update'])->name('content.update');
 
 });
+
+// paypal
+Route::get('/paypal', [PayPalController::class, 'index'])->name('paypal.index');
+Route::get('/create/{amount}', [PayPalController::class, 'create']);
+Route::post('/complete', [PayPalController::class, 'complete']);
+Route::post('/paypal/store', [PayPalController::class, 'store'])->name('payment.store');
 
 Route::get('/sponsor/schedule', function () {
     return view('sponsor.schedule');
