@@ -7,18 +7,15 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
         </div>
         
-        <div class="modal-body">
-            <p class="fw-bold">{{ $content->title }}</p>
-            <label for="content_name" class="form-label">New label name</label>
-            <input type="text" name="name" id="content_name" class="form-control" value="{{ old('name', $content->name) }}">
-        </div>
-        
-        <div class="modal-footer">
+        <div class="container">
             <form action="{{ route('admin.content.update', $content->id) }}" method="post">
                 @csrf
                 @method('PATCH')
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Stop</button>
-                <button type="submit" class="btn btn-danger">Update</button>
+                <p class="fw-bold">{{ $content->title }}</p>
+                <label for="content_name" class="form-label">New Content name</label>
+                <input type="text" name="name" id="content_name" class="form-control" value="{{ old('name', $content->name) }}">
+                <button type="button" class="btn btn-secondary btn-sm mt-3 mb-3" data-bs-dismiss="modal">Stop</button>
+                <button type="submit" class="btn btn-danger btn-sm mt-3 mb-3">Update</button>
             </form>
         </div>
       </div>

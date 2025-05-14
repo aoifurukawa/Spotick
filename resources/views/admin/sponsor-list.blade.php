@@ -17,6 +17,9 @@
                             <td style="background-color: #ddd;" class=" text-center fw-bold"><a href="{{ route('admin.users') }}" class="text-dark text-decoration-none">User</a></td>
                         </tr>
                         <tr>
+                            <td style="background-color: #ddd;" class="text-center fw-bold"><a href="{{ route('admin.payments') }}" class="text-dark text-decoration-none">Payment</a></td>
+                        </tr>
+                        <tr>
                             <td style="background-color: #ddd;" class=" text-center fw-bold"><a href="{{ route('admin.contents') }}" class="text-dark text-decoration-none">Content</a></td>
                         </tr>
                     </tbody>

@@ -63,10 +63,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::get('/admin/users-list', [UsersController::class, 'users_show'])->name('users');
     Route::get('/admin/{id}/user-information', [UsersController::class, 'users_info_show'])->name('user-info.show');
 
+    // payment
+    Route::get('admin/payment', [UsersController::class, 'payments_show'])->name('payments');
+
     // content
     Route::get('/users-content', [ContentsController::class, 'contents_show'])->name('contents');
     Route::post('/content/store', [ContentsController::class, 'store'])->name('content.store');
     Route::patch('/content/{id}/update', [ContentsController::class, 'update'])->name('content.update');
+    Route::delete('/content/{id}/destroy', [ContentsController::class, 'destroy'])->name('content.destroy');
 
 });
 

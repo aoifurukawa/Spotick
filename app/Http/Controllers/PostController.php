@@ -172,20 +172,30 @@ class PostController extends Controller
             $venue = $request->venue;
         }
 
+        $selected_content = '';
         if ($request->filled('content')) {
-            $query->where('content', $request->content); // contentが1や2などの値
+            $query->where('content', $request->content);
+            $selected_content = $request->content;
         }
 
+        $selected_date = '';
         if ($request->filled('date')) {
             $query->whereDate('date', $request->date);
+            $selected_date = $request->date;
         }
 
+        $start_term = '';
+        $end_term = '';
         if ($request->filled('start_term') && $request->filled('end_term')) {
             $query->whereBetween('date', [$request->start_term, $request->end_term]);
+            $start_term = $request->start_term;
+            $end_term = $request->end_term;
         }
 
+        $price = '';
         if ($request->filled('price')) {
             $query->where('price', '<=', $request->price);
+            $price = $request->price;
         }
 
         $results = $query->get();
@@ -195,6 +205,11 @@ class PostController extends Controller
         return view('research-result')->with('results', $results)
             ->with('title', $title)
             ->with('venue', $venue)
+            ->with('selected_content', $selected_content)
+            ->with('selected_date', $selected_date)
+            ->with('start_term', $start_term)
+            ->with('end_term', $end_term)
+            ->with('price', $price)
             ->with('all_content', $all_content);
     }
 
