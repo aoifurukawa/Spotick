@@ -38,11 +38,11 @@ class ReservationController extends Controller
 
         $post_info = $this->post->findOrFail($post_id);
         $number_of_tickets = $request->number_of_tickets;
-        $user_name = Auth::user()->name;
+        $booked_user = Auth::user();
 
         return redirect()->route('paypal.index')->with('post_info', $post_info)
             ->with('number_of_tickets', $number_of_tickets)
-            ->with('user_name', $user_name);
+            ->with('booked_user', $booked_user);
     }
 
     public function show()
