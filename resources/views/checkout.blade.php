@@ -73,8 +73,8 @@
 
       <form action="{{ route('payment.store') }}" style="display: none" id="paypal_store" method="post">
         @csrf
-        <input type="text" value="{{ $user_name }}" name="user_name">
-        <input type="text" value="{{ $post_info->title }}" name="post_title">
+        <input type="text" value="{{ $booked_user->id }}" name="user_id">
+        <input type="text" value="{{ $post_info->id }}" name="post_id">
         <input type="number" value="{{ $number_of_tickets }}" name="number_of_tickets">
         <input type="number" value="{{ $post_info->price*$number_of_tickets }}" name="amount">
       </form>

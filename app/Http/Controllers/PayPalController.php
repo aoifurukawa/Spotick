@@ -31,9 +31,9 @@ class PayPalController extends Controller
 
         $post_info = session('post_info');
         $number_of_tickets = session('number_of_tickets');
-        $user_name = session('user_name');
+        $booked_user = session('booked_user');
 
-        return view('checkout', compact('post_info', 'number_of_tickets', 'user_name'));
+        return view('checkout', compact('post_info', 'number_of_tickets', 'booked_user'));
     }
 
     private function getAccessToken(): string
@@ -111,10 +111,10 @@ class PayPalController extends Controller
         // ]);
 
         Payment::create([
-            'user_name' => $request->input('user_name'),
-            'post_title' => $request->input('post_title'),
-            'number_of_tickets' => $request->input('number_of_tickets'),
-            'amount' => $request->input('amount'),
+            'user_id' => $request->user_id,
+            'post_id' => $request->post_id,
+            'number_of_tickets' => $request->number_of_tickets,
+            'amount' => $request->amount,
 
         ]);
 

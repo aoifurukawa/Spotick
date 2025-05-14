@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use App\Models\User;
 
 class UsersController extends Controller
@@ -45,6 +46,8 @@ class UsersController extends Controller
 
     public function payments_show()
     {
-        return view('admin.payment-list');
+        $payment_record = Payment::latest()->get();
+
+        return view('admin.payment-list')->with('payment_record', $payment_record);
     }
 }

@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->string('user_name'); // ユーザー名
-            $table->string('post_title'); // 投稿（イベントなど）の名前
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('post_id')->constrained()->onDelete('cascade');
+
             $table->integer('number_of_tickets'); // チケット枚数
             $table->integer('amount'); // 支払い金額（合計）
 

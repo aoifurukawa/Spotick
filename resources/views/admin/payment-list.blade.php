@@ -32,32 +32,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @forelse ($payment_record as $payment)
                         <tr>
-                            <td>2025/07/27</td>
-                            <td>Aoi Furukawa</td>
-                            <td>3</td>
-                            <td>Lakers Fan event</td>
-                            <td>140</td>
-                            <td>US VISA 334 5554 2223</td>
+                            <td>{{$payment->created_at}}</td>
+                            <td>{{$payment->user->name}}</td>
+                            <td>{{$payment->number_of_tickets}}</td>
+                            <td>{{$payment->post->title}}</td>
+                            <td>{{$payment->amount}}</td>
+                            <td>{{$payment->user->phone_number}}</td>
                         </tr>
-
-                        <tr>
-                            <td>2025/07/27</td>
-                            <td>Aoi Furukawa</td>
-                            <td>3</td>
-                            <td>Lakers Fan event</td>
-                            <td>140</td>
-                            <td>US VISA 334 5554 2223</td>
-                        </tr>
-
-                        <tr>
-                            <td>2025/07/27</td>
-                            <td>Aoi Furukawa</td>
-                            <td>3</td>
-                            <td>Lakers Fan event</td>
-                            <td>140</td>
-                            <td>US VISA 334 5554 2223</td>
-                        </tr>
+                        @empty
+                            <p>No record yet</p>
+                        @endforelse
                     </tbody>
                 </table>
         </div>
