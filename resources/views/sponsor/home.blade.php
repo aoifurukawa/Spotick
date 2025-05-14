@@ -131,7 +131,7 @@ left: 30%;">
                 <p class="text-center fw-bold" style="transform: rotate(90deg); font-size: 2rem;">~</p>
                 <input type="date" name="end_term" id="date" class='form-control mb-3'>
 
-                <label for="price" class="form-label fw-bold">Max price</label>
+                <label for="price" class="form-label fw-bold">Max price / per ticket</label>
                 <input type="number" name="price" id="price" class='form-control mb-5' min="0" placeholder="$">
 
                 <div class="row text-center mb-3">
@@ -168,11 +168,11 @@ left: 30%;">
                     <a href="{{ route('event-detail.show', $post->id) }}"><img src="{{ $post->picture_1 }}" alt="Event Image" class="event-image"></a>
                     <div class="event-content">
                         <div class="event-meta">
-                            <span class="event-title">{{\Illuminate\Support\Str::limit($post->title, 18, '...')}}</span>
+                            <span class="event-title">{{\Illuminate\Support\Str::limit($post->title, 16, '...')}}</span>
                             <span>{{$post->date}} </span>
-                            <span>{{$post->venue}}</span>
+                            <span>{{\Illuminate\Support\Str::limit($post->venue, 15, '...')}}</span>
                         </div>
-                        <p class="event-description"><span class='fw-bold'>Description: </span>{{\Illuminate\Support\Str::limit($post->description, 60, '...')}}</p>
+                        <p class="event-description"><span class='fw-bold'>Description: </span>{{\Illuminate\Support\Str::limit($post->description, 45, '...')}}</p>
                     </div>
                     <div>
                         @if ($post->like()->where('user_id', Auth::id())->exists())

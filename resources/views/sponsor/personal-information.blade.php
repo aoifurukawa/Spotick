@@ -21,7 +21,7 @@
                 <input class="form-control mb-3" type="file" id="formFile" name="avatar">
                 <label for="name" class="form-label">User Name</label>
                 <input type="text" name="name" id="name" class="form-control mb-3" value='{{ old('name', Auth::user()->name) }}'>
-                <label for="role" class="form-label">Role</label>
+                <label for="role" class="form-label">Role: if you choose Sponsor, you have to create <a href="https://www.paypal.com/ph/home">Paypal</a> account</label>
                 <select name="role_id" id="role" class="form-select mb-3">
                     <option value="" hidden>Select role</option>
                     <option value="2" {{ old('role_id', Auth::user()->role_id) == 2 ? 'selected' : '' }}>User</option>
@@ -39,7 +39,7 @@
                 <hr>
                 <label for="email" class="form-label">Email Address</label>
                 <input type="email" name="email" id="email" class="form-control mb-3" value='{{ old('email', Auth::user()->email) }}'>
-                <label for="phone" class="form-label">Phone Number</label>
+                <label for="phone" class="form-label">Phone Number <span class="fw-bold">(same as Paypal phone number)</span></label>
                 <input type="number" name="phone_number" id="phone" class="form-control mb-3" value='{{ old('phone_number', Auth::user()->phone_number) }}'>
 
                 <h4>Residence Information</h4>
@@ -300,7 +300,7 @@
                 <input type="text" name="airport" id="air_port" class="form-control mb-3" value='{{ old('air_port', Auth::user()->airport) }}'>
                 <div class="row" style="margin-top: 47px;">
                     <div class="col-6"><button type="submit" class="btn btn-primary w-100"><span>Update </span></button></div>
-                    <div class="col-6"><button type="submit" class="btn btn-danger w-100"><span>Cancel </span></button></div>
+                    <div class="col-6"><button type="btn" class="btn btn-danger w-100"><a href="{{ route('home') }}" class="text-decoration-none text-white">Cancel </a></button></div>
                 </div>
             </div>
         </div>

@@ -42,4 +42,9 @@ class UsersController extends Controller
 
         return view('admin.user-list')->with('all_user', $all_user);
     }
+
+    public function payments_show()
+    {
+        return view('admin.payment-list');
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Content;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class ContentsController extends Controller
@@ -43,6 +44,19 @@ class ContentsController extends Controller
         $updated_content = $this->content->findOrFail($id);
         $updated_content->name = $request->name;
         $updated_content->save();
+
+        return redirect()->route('admin.contents');
+    }
+
+    public function destroy($id)
+    {
+        $destroyed_content = $this->content->findOrFail($id);
+        $uncategorized = $this->content->firstOrCreate(['name' => 'uncategorized']);
+
+        Post::where('content', $destroyed_content->name)
+            ->update(['content' => $uncategorized->name]);
+
+        $destroyed_content->delete();
 
         return redirect()->route('admin.contents');
     }

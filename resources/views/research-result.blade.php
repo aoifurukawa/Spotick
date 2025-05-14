@@ -119,7 +119,7 @@
                 <p class="text-center fw-bold" style="transform: rotate(90deg); font-size: 2rem;">~</p>
                 <input type="date" name="date" id="date" class='form-control mb-3'>
 
-                <label for="price" class="form-label fw-bold">Max price</label>
+                <label for="price" class="form-label fw-bold">Max price / per ticket</label>
                 <input type="number" name="price" id="price" class='form-control mb-5' min="0" placeholder="$">
 
                 <div class="row text-center mb-3">
@@ -136,7 +136,32 @@
         <div class="col-9">
             <h1 class='display-3  text-center'>All Events</h1>
             <hr>
-            <h3 class="mx-auto" style="width:85%">your condition: <span class='text-danger'>{{$title}} {{$venue}}</span></h3>
+            @php
+                $hasCondition = $title || $venue || $selected_content || $selected_date || ($start_term && $end_term) || ($price);
+            @endphp
+            @if($hasCondition)
+                <h3 class="mx-auto" style="width:85%">
+                    <strong>Your Search Condition:</strong><br>
+                    @if($title)
+                        <span class='text-danger'>Title: {{ $title }}</span><br>
+                    @endif
+                    @if($venue)
+                        <span class='text-primary'>Venue: {{ $venue }}</span><br>
+                    @endif
+                    @if($selected_content)
+                        <span class='text-warning'>Content: {{ $selected_content }}</span><br>
+                    @endif
+                    @if($selected_date)
+                        <span class='text-light'>Date: {{ $selected_date }}</span><br>
+                    @endif
+                    @if($start_term && $end_term)
+                        <span class="text-success">Term: {{ $start_term }} ~ {{ $end_term }}</span>
+                    @endif
+                    @if ($price)
+                        <span class="text-info">Max price: {{ $price }}</span>
+                    @endif
+                </h3>
+            @endif
             <hr>
 
             @forelse ($results as $post)
@@ -144,11 +169,11 @@
                     <a href="{{ route('event-detail.show', $post->id) }}"><img src="{{ $post->picture_1 }}" alt="Event Image" class="event-image"></a>
                     <div class="event-content">
                         <div class="event-meta">
-                            <span class="event-title">{{\Illuminate\Support\Str::limit($post->title, 18, '...')}}</span>
+                            <span class="event-title">{{\Illuminate\Support\Str::limit($post->title, 15, '...')}}</span>
                             <span>{{$post->date}} </span>
-                            <span>{{$post->venue}}</span>
+                            <span>{{\Illuminate\Support\Str::limit($post->venue, 15, '...')}}</span>
                         </div>
-                        <p class="event-description"><span class='fw-bold'>Description: </span>{{\Illuminate\Support\Str::limit($post->description, 60, '...')}}</p>
+                        <p class="event-description"><span class='fw-bold'>Description: </span>{{\Illuminate\Support\Str::limit($post->description, 45, '...')}}</p>
                     </div>
                     <div>
                         @if ($post->like()->where('user_id', Auth::id())->exists())
