@@ -18,7 +18,7 @@ class UsersController extends Controller
     // sponsor
     public function sponsors_show()
     {
-        $all_sponsor = User::whereIn('role_id', [1, 3])->get();
+        $all_sponsor = User::whereIn('role_id', [1, 3])->withTrashed()->get();
 
         return view('admin.sponsor-list')->with('all_sponsors', $all_sponsor);
     }
@@ -49,5 +49,19 @@ class UsersController extends Controller
         $payment_record = Payment::latest()->get();
 
         return view('admin.payment-list')->with('payment_record', $payment_record);
+    }
+
+    public function deactivate($id)
+    {
+        $this->user->destroy($id);
+
+        return redirect()->back();
+    }
+
+    public function activate($id)
+    {
+        $this->user->onlyTrashed()->findOrFail($id)->restore();
+
+        return redirect()->back();
     }
 }

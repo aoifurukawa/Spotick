@@ -58,6 +58,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     // sponsor
     Route::get('/admin/sponsors-list', [UsersController::class, 'sponsors_show'])->name('sponsors');
     Route::get('/admin/{id}/sponsor-information', [UsersController::class, 'sponsors_info_show'])->name('sponsor-info.show');
+    Route::patch('/admin/{id}/activate', [UsersController::class, 'activate'])->name('sponsor.activate');
+    Route::delete('/admin/{id}/deactivate', [UsersController::class, 'deactivate'])->name('sponsor.deactivate');
 
     // user
     Route::get('/admin/users-list', [UsersController::class, 'users_show'])->name('users');

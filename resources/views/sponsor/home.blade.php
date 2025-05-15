@@ -95,8 +95,7 @@
     </div>
   
     <!-- 重ねるカード -->
-    <div class="position-absolute translate-middle bg-white p-4 shadow rounded" style="width: 40%; max-width: 500px; z-index: 10; opacity: 0.75; top: 50%;
-left: 30%;">
+    <div class="position-absolute translate-middle bg-white p-4 shadow rounded" style="width: 40%; max-width: 500px; z-index: 10; opacity: 0.75; top: 50%; left: 30%;">
       <h5 class="mb-2 fw-bold">Enjoy Sports Like Never Before!</h5>
       <p class="mb-1">Feel the thrill of the game, the energy of the crowd, and the joy of cheering together.</p>
       <p class="mb-0">Find your favorite team and book your match easily right here!</p>

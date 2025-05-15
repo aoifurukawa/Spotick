@@ -39,7 +39,7 @@
                     <tbody>
                         @forelse ($all_sponsors as $sponsor)
                         <tr>
-                            <td>
+                            <td class="{{ $sponsor->trashed() ? 'bg-secondary text-muted' : '' }}">
                                 @if ($sponsor->avatar)
                                     <img src={{ $sponsor->avatar }} alt="" style="height: 45px; width: 45px; border-radius: 50%; border: 1px solid black">
 
@@ -47,11 +47,32 @@
                                     <img src={{ asset('images/doll.png') }} alt="" style="height: 20%; width: 20%; border-radius: 50%; border: 1px solid black">
                                 @endif
                             </td>
-                            <td class="align-middle">{{$sponsor->name}}</td>
-                            <td>
-                                <a href="{{ route('admin.sponsor-info.show', $sponsor->id) }}" class="btn btn-primary btn-outline-white">show</a>
-                                <button type="submit" class="btn btn-danger">Hide</button>
-                                <button type="submit" class="btn btn-danger">Unhide</button>
+                            <td class="align-middle {{ $sponsor->trashed() ? 'bg-secondary text-muted' : '' }}">{{$sponsor->name}}</td>
+                            <td class="{{ $sponsor->trashed() ? 'bg-secondary text-muted' : '' }}">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <a href="{{ route('admin.sponsor-info.show', $sponsor->id) }}" class="btn btn-primary btn-outline-white me-2">show</a>
+
+                                    @if (Auth::user()->id !== $sponsor->id)
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-sm" data-bs-toggle="dropdown">
+                                                <i class="fa-solid fa-ellipsis"></i>
+                                            </button>
+
+                                            <div class="dropdown-menu">
+                                                @if ($sponsor->trashed())
+                                                    <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#activate-user-{{$sponsor->id}}">
+                                                        <i class="fa-solid fa-user-checked"></i> Activate {{$sponsor->name}}
+                                                    </button>
+                                                @else
+                                                    <button type="button" class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#deactivate-user-{{$sponsor->id}}">
+                                                        <i class="fa-solid fa-user-slash"></i> Deactivate {{$sponsor->name}}
+                                                    </button>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @include('admin.modal.status')
+                                    @endif
+                                </div>
                             </td>
                         </tr>
                         @empty
