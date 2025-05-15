@@ -122,8 +122,8 @@
                     @endforeach
                 </select>
 
-                <label for="date" class="form-label fw-bold">Date</label>
-                <input type="date" name="date" id="date" class='form-control mb-3'>
+                <label for="selected_date" class="form-label fw-bold">Date</label>
+                <input type="date" name="selected_date" id="selected_date" class='form-control mb-3'>
 
                 <label for="date" class="form-label fw-bold">Term</label>
                 <input type="date" name="start_term" id="date" class='form-control mb-3'>

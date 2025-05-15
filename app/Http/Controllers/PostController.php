@@ -179,11 +179,10 @@ class PostController extends Controller
         }
 
         $selected_date = '';
-        if ($request->filled('date')) {
-            $query->whereDate('date', $request->date);
-            $selected_date = $request->date;
+        if ($request->filled('selected_date')) {
+            $query->whereDate('date', $request->selected_date);
+            $selected_date = $request->selected_date;
         }
-
         $start_term = '';
         $end_term = '';
         if ($request->filled('start_term') && $request->filled('end_term')) {

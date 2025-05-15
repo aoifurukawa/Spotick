@@ -111,13 +111,13 @@
                     @endforeach
                 </select>
 
-                <label for="date" class="form-label fw-bold">Date</label>
-                <input type="date" name="date" id="date" class='form-control mb-3'>
+                <label for="selected_date" class="form-label fw-bold">Date</label>
+                <input type="date" name="selected_date" id="selected_date" class='form-control mb-3'>
 
                 <label for="date" class="form-label fw-bold">Term</label>
-                <input type="date" name="date" id="date" class='form-control mb-3'>
+                <input type="date" name="start_term" id="date" class='form-control mb-3'>
                 <p class="text-center fw-bold" style="transform: rotate(90deg); font-size: 2rem;">~</p>
-                <input type="date" name="date" id="date" class='form-control mb-3'>
+                <input type="date" name="end_term" id="date" class='form-control mb-3'>
 
                 <label for="price" class="form-label fw-bold">Max price / per ticket</label>
                 <input type="number" name="price" id="price" class='form-control mb-5' min="0" placeholder="$">
@@ -152,7 +152,7 @@
                         <span class='text-warning'>Content: {{ $selected_content }}</span><br>
                     @endif
                     @if($selected_date)
-                        <span class='text-light'>Date: {{ $selected_date }}</span><br>
+                        <span class='text-secondary'>Date: {{ $selected_date }}</span><br>
                     @endif
                     @if($start_term && $end_term)
                         <span class="text-success">Term: {{ $start_term }} ~ {{ $end_term }}</span>
