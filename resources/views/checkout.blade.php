@@ -8,7 +8,7 @@
 
   <link rel="stylesheet" href="https://assets.edlin.app/bootstrap/v5.3/bootstrap.css">
 
-  <script src="https://www.paypal.com/sdk/js?client-id={{config('paypal.client_id')}}&currency=GBP&intent=capture"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id={{config('paypal.client_id')}}&currency=USD&intent=capture"></script>
 
   <!-- Title -->
   <title>PayPal Laravel</title>
@@ -82,7 +82,7 @@
       <div class="row mt-3">
         <div class="col-12 col-lg-6 offset-lg-3">
           <div class="input-group">
-            <span class="input-group-text">£</span>
+            <span class="input-group-text">$</span>
             <input type="text"
                    class="form-control"
                    id="paypal-amount"

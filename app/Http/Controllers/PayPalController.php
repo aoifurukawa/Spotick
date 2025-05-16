@@ -66,7 +66,7 @@ class PayPalController extends Controller
                 [
                     'reference_id' => $id,
                     'amount' => [
-                        'currency_code' => 'GBP',
+                        'currency_code' => 'USD',
                         'value' => number_format($amount, 2),
                     ],
                 ],

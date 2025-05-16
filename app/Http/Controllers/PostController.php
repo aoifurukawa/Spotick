@@ -114,7 +114,7 @@ class PostController extends Controller
                     私は {$event_date} に {$venue} で開催されるイベントに参加します。
                     自宅は {$user_address} にあり、よく利用する空港は {$user_airport} です。
 
-                    以下の内容について、200単語ほどの英語でわかりやすく丁寧に教えてください。
+                    以下の内容について、180単語ほどの英語でわかりやすく丁寧に教えてください。
 
                     【1. アクセス方法】
                     自宅（{$user_address}）または空港（{$user_airport}）から、イベント会場（{$venue}）までの最適なアクセス方法を提案してください。

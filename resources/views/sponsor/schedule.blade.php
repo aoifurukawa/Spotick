@@ -221,7 +221,7 @@
 
 <div class="footer d-flex align-items-center justify-content-center" style="position: fixed; width: 100%; background-color: black; bottom: 0; height: 70px;">
     <div class="container">
-        
+        <p class="text-white text-center">If you have already joined an event but the post still appears in your schedule, you may simply click the Cancel button to remove it yourself.</p>
     </div>
 </div>
 

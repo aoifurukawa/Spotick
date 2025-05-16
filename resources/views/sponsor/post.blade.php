@@ -44,7 +44,7 @@
                     <div class="row">
                         <div class="col-4">
                             <label for="date" class="form-label fw-bold mt-3">Date</label>
-                            <input type="date" name="date" id="date" class="form-control">
+                            <input type="datetime-local" name="date" id="date" class="form-control">
                             @error('date')
                                 <div class="text-danger">{{$message}}</div>
                             @enderror
