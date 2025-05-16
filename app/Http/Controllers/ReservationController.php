@@ -40,7 +40,11 @@ class ReservationController extends Controller
         $number_of_tickets = $request->number_of_tickets;
         $booked_user = Auth::user();
 
-        return redirect()->route('paypal.index')->with('post_info', $post_info)
+        // return redirect()->route('paypal.index')->with('post_info', $post_info)
+        //     ->with('number_of_tickets', $number_of_tickets)
+        //     ->with('booked_user', $booked_user);
+
+        return view('checkout')->with('post_info', $post_info)
             ->with('number_of_tickets', $number_of_tickets)
             ->with('booked_user', $booked_user);
     }

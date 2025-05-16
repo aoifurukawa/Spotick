@@ -158,7 +158,7 @@
                         <span class="text-success">Term: {{ $start_term }} ~ {{ $end_term }}</span>
                     @endif
                     @if ($price)
-                        <span class="text-info">Max price: {{ $price }}</span>
+                        <span class="text-info">Max price: {{ $price }}$</span>
                     @endif
                 </h3>
             @endif

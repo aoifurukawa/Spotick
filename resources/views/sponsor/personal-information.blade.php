@@ -24,8 +24,12 @@
                 <label for="role" class="form-label">Role: if you choose Sponsor, you have to create <a href="https://www.paypal.com/ph/home">Paypal</a> account</label>
                 <select name="role_id" id="role" class="form-select mb-3">
                     <option value="" hidden>Select role</option>
-                    <option value="2" {{ old('role_id', Auth::user()->role_id) == 2 ? 'selected' : '' }}>User</option>
-                    <option value="3" {{ old('role_id', Auth::user()->role_id) == 3 ? 'selected' : '' }}>Sponsor</option>
+                    @if (Auth::user()->role_id == 1)
+                        <option value="1" {{ old('role_id', Auth::user()->role_id) == 1 ? 'selected' : '' }}>Administrator</option>
+                    @else
+                        <option value="2" {{ old('role_id', Auth::user()->role_id) == 2 ? 'selected' : '' }}>User</option>
+                        <option value="3" {{ old('role_id', Auth::user()->role_id) == 3 ? 'selected' : '' }}>Sponsor</option>
+                    @endif
                 </select>
                 @error('role_id')
                     <div class="text-danger">{{$message}}</div>
@@ -45,37 +49,37 @@
                 <h4>Residence Information</h4>
                 <hr>
                 <label for="country" class="form-label">Country</label>
-                <select name="country" id="cuntry" class="form-select mb-3" >
+                <select name="country" id="cuntry" class="form-select mb-3" >                                   
                     <option value="" hidden></option>
-                    <option value="Afghanistan">Afghanistan</option>
-                    <option value="Åland Islands">Åland Islands</option>
-                    <option value="Albania">Albania</option>
-                    <option value="Algeria">Algeria</option>
-                    <option value="American Samoa">American Samoa</option>
-                    <option value="Andorra">Andorra</option>
-                    <option value="Angola">Angola</option>
-                    <option value="Anguilla">Anguilla</option>
-                    <option value="Antarctica">Antarctica</option>
-                    <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                    <option value="Argentina">Argentina</option>
-                    <option value="Armenia">Armenia</option>
-                    <option value="Aruba">Aruba</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Austria">Austria</option>
-                    <option value="Azerbaijan">Azerbaijan</option>
-                    <option value="Bahamas">Bahamas</option>
-                    <option value="Bahrain">Bahrain</option>
-                    <option value="Bangladesh">Bangladesh</option>
-                    <option value="Barbados">Barbados</option>
-                    <option value="Belarus">Belarus</option>
-                    <option value="Belgium">Belgium</option>
-                    <option value="Belize">Belize</option>
-                    <option value="Benin">Benin</option>
-                    <option value="Bermuda">Bermuda</option>
-                    <option value="Bhutan">Bhutan</option>
-                    <option value="Bolivia">Bolivia</option>
-                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                    <option value="Botswana">Botswana</option>
+                    <option value="Afghanistan" {{ old('country', Auth::user()->country ?? '') == 'Afghanistan' ? 'selected' : '' }}>Afghanistan</option>
+                    <option value="Åland Islands" {{ old('country', Auth::user()->country ?? '') == 'Åland Islands' ? 'selected' : '' }}>Åland Islands</option>
+                    <option value="Albania" {{ old('country', Auth::user()->country ?? '') == 'Albania' ? 'selected' : '' }}>Albania</option>
+                    <option value="Algeria" {{ old('country', Auth::user()->country ?? '') == 'Algeria' ? 'selected' : '' }}>Algeria</option>
+                    <option value="American Samoa" {{ old('country', Auth::user()->country ?? '') == 'American Samoa' ? 'selected' : '' }}>American Samoa</option>
+                    <option value="Andorra" {{ old('country', Auth::user()->country ?? '') == 'Andorra' ? 'selected' : '' }}>Andorra</option>
+                    <option value="Angola" {{ old('country', Auth::user()->country ?? '') == 'Angola' ? 'selected' : '' }}>Angola</option>
+                    <option value="Anguilla" {{ old('country', Auth::user()->country ?? '') == 'Anguilla' ? 'selected' : '' }}>Anguilla</option>
+                    <option value="Antarctica" {{ old('country', Auth::user()->country ?? '') == 'Antarctica' ? 'selected' : '' }}>Antarctica</option>
+                    <option value="Antigua and Barbuda" {{ old('country', Auth::user()->country ?? '') == 'Antigua and Barbuda' ? 'selected' : '' }}>Antigua and Barbuda</option>
+                    <option value="Argentina" {{ old('country', Auth::user()->country ?? '') == 'Argentina' ? 'selected' : '' }}>Argentina</option>
+                    <option value="Armenia" {{ old('country', Auth::user()->country ?? '') == 'Armenia' ? 'selected' : '' }}>Armenia</option>
+                    <option value="Aruba" {{ old('country', Auth::user()->country ?? '') == 'Aruba' ? 'selected' : '' }}>Aruba</option>
+                    <option value="Australia" {{ old('country', Auth::user()->country ?? '') == 'Australia' ? 'selected' : '' }}>Australia</option>
+                    <option value="Austria" {{ old('country', Auth::user()->country ?? '') == 'Austria' ? 'selected' : '' }}>Austria</option>
+                    <option value="Azerbaijan" {{ old('country', Auth::user()->country ?? '') == 'Azerbaijan' ? 'selected' : '' }}>Azerbaijan</option>
+                    <option value="Bahamas" {{ old('country', Auth::user()->country ?? '') == 'Bahamas' ? 'selected' : '' }}>Bahamas</option>
+                    <option value="Bahrain" {{ old('country', Auth::user()->country ?? '') == 'Bahrain' ? 'selected' : '' }}>Bahrain</option>
+                    <option value="Bangladesh" {{ old('country', Auth::user()->country ?? '') == 'Bangladesh' ? 'selected' : '' }}>Bangladesh</option>
+                    <option value="Barbados" {{ old('country', Auth::user()->country ?? '') == 'Barbados' ? 'selected' : '' }}>Barbados</option>
+                    <option value="Belarus" {{ old('country', Auth::user()->country ?? '') == 'Belarus' ? 'selected' : '' }}>Belarus</option>
+                    <option value="Belgium" {{ old('country', Auth::user()->country ?? '') == 'Belgium' ? 'selected' : '' }}>Belgium</option>
+                    <option value="Belize" {{ old('country', Auth::user()->country ?? '') == 'Belize' ? 'selected' : '' }}>Belize</option>
+                    <option value="Benin" {{ old('country', Auth::user()->country ?? '') == 'Benin' ? 'selected' : '' }}>Benin</option>
+                    <option value="Bermuda" {{ old('country', Auth::user()->country ?? '') == 'Bermuda' ? 'selected' : '' }}>Bermuda</option>
+                    <option value="Bhutan" {{ old('country', Auth::user()->country ?? '') == 'Bhutan' ? 'selected' : '' }}>Bhutan</option>
+                    <option value="Bolivia" {{ old('country', Auth::user()->country ?? '') == 'Bolivia' ? 'selected' : '' }}>Bolivia</option>
+                    <option value="Bosnia and Herzegovina" {{ old('country', Auth::user()->country ?? '') == 'Bosnia and Herzegovina' ? 'selected' : '' }}>Bosnia and Herzegovina</option>
+                    <option value="Botswana" {{ old('country', Auth::user()->country ?? '') == 'Botswana' ? 'selected' : '' }}>Botswana</option>
                     <option value="Bouvet Island">Bouvet Island</option>
                     <option value="Brazil">Brazil</option>
                     <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
@@ -156,7 +160,7 @@
                     <option value="Israel">Israel</option>
                     <option value="Italy">Italy</option>
                     <option value="Jamaica">Jamaica</option>
-                    <option value="Japan">Japan</option>
+                    <option value="Japan" {{ old('country', Auth::user()->country ?? '') == 'Japan' ? 'selected' : '' }}>Japan</option>
                     <option value="Jersey">Jersey</option>
                     <option value="Jordan">Jordan</option>
                     <option value="Kazakhstan">Kazakhstan</option>
@@ -220,7 +224,7 @@
                     <option value="Papua New Guinea">Papua New Guinea</option>
                     <option value="Paraguay">Paraguay</option>
                     <option value="Peru">Peru</option>
-                    <option value="Philippines">Philippines</option>
+                    <option value="Philippines" {{ old('country', Auth::user()->country ?? '') == 'philippines' ? 'selected' : '' }}>Philippines</option>
                     <option value="Pitcairn">Pitcairn</option>
                     <option value="Poland">Poland</option>
                     <option value="Portugal">Portugal</option>
@@ -300,7 +304,7 @@
                 <input type="text" name="airport" id="air_port" class="form-control mb-3" value='{{ old('air_port', Auth::user()->airport) }}'>
                 <div class="row" style="margin-top: 47px;">
                     <div class="col-6"><button type="submit" class="btn btn-primary w-100"><span>Update </span></button></div>
-                    <div class="col-6"><button type="btn" class="btn btn-danger w-100"><a href="{{ route('home') }}" class="text-decoration-none text-white">Cancel </a></button></div>
+                    <div class="col-6"><a href="{{ route('home') }}" class="text-decoration-none btn btn-danger btn-outline-white w-100">Cancel</a></div>
                 </div>
             </div>
         </div>
