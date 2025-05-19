@@ -22,6 +22,7 @@
                 <label for="name" class="form-label">User Name</label>
                 <input type="text" name="name" id="name" class="form-control mb-3" value='{{ old('name', Auth::user()->name) }}'>
                 <label for="role" class="form-label">Role: if you choose Sponsor, you have to create <a href="https://www.paypal.com/ph/home">Paypal</a> account</label>
+                <p class="my-0">Notion: if you change the role, you have to logout once.</p>
                 <select name="role_id" id="role" class="form-select mb-3">
                     <option value="" hidden>Select role</option>
                     @if (Auth::user()->role_id == 1)

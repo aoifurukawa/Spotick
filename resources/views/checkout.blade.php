@@ -28,40 +28,23 @@
   <div class="row mt-2">
     <div class="col-12">
       <div class="links h5">
-        <a class="text-decoration-none mx-3" href="https://edlin.xyz/website" target="_blank">Home</a>
-        <a class="text-decoration-none mx-3" href="https://edlin.xyz/portfolio" target="_blank">Portfolio</a>
-        <a class="text-decoration-none mx-3" href="https://edlin.xyz/contact" target="_blank">Contact</a>
-        <a class="text-decoration-none mx-3" href="https://edlin.xyz/linkedin" target="_blank">LinkedIn</a>
-        <a class="text-decoration-none mx-3" href="https://edlin.xyz/github/paypal-laravel" target="_blank">GitHub</a>
+        @if ($booked_user->role_id == 1||3)
+          <a class="text-decoration-none mx-3" href="{{ route('home') }}" target="_blank" style="color: #99FFFF">Home</a>
+          <a class="text-decoration-none mx-3" href="{{ route('sponsor.post') }}" target="_blank" style="color: #f5cb60">Post</a>
+          <a class="text-decoration-none mx-3" href="{{ route('reservation.show') }}" target="_blank" style="color: #FF99FF">schedule</a>
+        @else
+          <a class="text-decoration-none mx-3" href="{{ route('home') }}" target="_blank" style="color: #99FFFF">Home</a>
+          <a class="text-decoration-none mx-3" href="{{ route('reservation.show') }}" target="_blank" style="color: #FF99FF">schedule</a>
+        @endif
       </div>
     </div>
   </div>
   <div class="row mt-5">
     <div class="col-12">
-      <div class="row">
-        <div class="col-12 col-lg-6 offset-lg-3">
-          <p>Hey there, I'm a PayPal Payment Page.</p>
-
-          <p>Click the button below and you'll be taken to a <a href="https://developer.paypal.com/docs/checkout/"
-                                                                target="_blank">PayPal</a>
-            checkout form where you can enter real credit / debit card details and send me money.</p>
-
-          <p>My purpose is to demonstrate building a <a href="https://laravel.com/docs/10.x/"
-                                                        target="_blank">Laravel</a> / <a
-              href="https://developer.paypal.com/docs/checkout/" target="_blank">PayPal</a> app in 5 minutes.</p>
-
-          <p>You can see me building this app on <a href="https://edlin.xyz/youtube/paypal-laravel"
-                                                    target="_blank">YouTube</a>
-            and view the <a href="https://edlin.xyz/github/paypal-laravel"
-                            target="_blank">source code</a>.</p>
-
-          <p class="text-danger">
-            WARNING!!!<br/>
-            This is set to LIVE mode, so real money is used.<br/>
-            No refunds, use at your own risk.
-          </p>
-        </div>
-      </div>
+      <img src="{{ $post_info->picture_1 }}" alt="" style="border: 4px solid #3498db;
+                                                          border-radius: 15px;
+                                                          width: 300px;
+                                                          height: 200px;" class="">
 
       <div class="row mt-3" id="paypal-success" style="display: none;">
         <div class="col-12 col-lg-6 offset-lg-3">
