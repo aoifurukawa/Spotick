@@ -46,7 +46,7 @@
                         <div class="row">
                             <div class="col-4">
                                 <label for="date" class="form-label fw-bold mt-3">Date</label>
-                                <input type="date" name="date" id="date" class="form-control" value="{{ old('date', $post->date) }}">
+                                <input type="datetime-local" name="date" id="date" class="form-control" value="{{ old('date', $post->date) }}">
                                 @error('date')
                                     <div class="text-danger">{{$message}}</div>
                                 @enderror
