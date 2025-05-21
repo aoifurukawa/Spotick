@@ -4,15 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
+use App\Models\Post;
 use App\Models\User;
 
 class UsersController extends Controller
 {
     private $user;
 
-    public function __construct(User $user)
+    private $post;
+
+    public function __construct(User $user, Post $post)
     {
         $this->user = $user;
+        $this->post = $post;
     }
 
     // sponsor
@@ -51,11 +55,21 @@ class UsersController extends Controller
         return view('admin.payment-list')->with('payment_record', $payment_record);
     }
 
+    // public function deactivate($id)
+    // {
+    //     $this->user->destroy($id);
+
+    //     return redirect()->back();
+    // }
+
     public function deactivate($id)
     {
         $this->user->destroy($id);
 
+        $this->post->where('user_id', $id)->delete();
+
         return redirect()->back();
+
     }
 
     public function activate($id)
