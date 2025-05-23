@@ -99,7 +99,7 @@ class PostController extends Controller
 
     public function show($id)
     {
-
+        // github
         $user = auth()->user();
         $post_detail = $this->post->findOrFail($id);
 
