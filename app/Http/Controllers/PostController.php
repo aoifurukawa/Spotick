@@ -115,6 +115,7 @@ class PostController extends Controller
                     自宅は {$user_address} にあり、よく利用する空港は {$user_airport} です。
 
                     以下の内容について、180単語ほどの英語でわかりやすく丁寧に教えてください。
+                    *出力前に単語数をカウントして単語数の条件を満たせない場合は満たすまで処理を繰り返して。
 
                     【1. アクセス方法】
                     自宅（{$user_address}）または空港（{$user_airport}）から、イベント会場（{$venue}）までの最適なアクセス方法を提案してください。
